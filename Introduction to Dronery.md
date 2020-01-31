@@ -18,12 +18,10 @@ This quick start guide should provide you with the basic knowledge needed to und
 Firstly, the things that create lift, the propellers.  
 **This should always be put on LAST only after all other checks have been performed. ALWAYS CHECK WITH OTHERS BEFORE PUTTING ON PROPELLERS FOR MAIDEN FLIGHT. The propellers can gravely injure people.** 
 
-![logo](https://imgur.com/oabVHUj.png) 
-
-
-<center>"Betaflight default X-Frame quadcopter prop configuration"
-
-
+<p align="center">
+  <img src=https://imgur.com/oabVHUj.png />
+  Betaflight default X-frame quadcopter prop configuration
+</p>
 
 You would notice that the Motors marked 1 and 4 spin anticlockwise and the Motors marked 2 and 3 spin clockwise. Before placing the propellers, **ensure that the correct CW/CCW propellers are used for the correct motors**. If the motors spin clockwise, the nut should be tightened anticlockwise(and vice versa). This prevents the propellers from loosening during flight.
 
@@ -33,7 +31,9 @@ When in doubt, refer to the documentation on the flightstack(betaflight) itself.
 Supplies power from the battery to the motors and converts the battery voltage to 5V for the flight controller, regulates power input to prevent the electronics onboard from damaging levels of power.
 Orientation of the PDB does not matter that much but the big solder pads for the battery terminals should be mounted in the right orientation so that the battery leads can be easily accessed.
 
-<div style="text-align:center"><img src=https://cdn.getfpv.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/f/c/fchub-6s_main.jpg /></div>
+<p align="center">
+  <img src=https://cdn.getfpv.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/f/c/fchub-6s_main.jpg />
+</p>
 
 Certain PDBs have S1,S2,S3,S4 connections which can be used to wire up motor PWM inputs. A ribbon cable or wire harness is used to connect the motor inputs to the main flight controller. However the purpose of this is to simplify wiring, there are ports to connect the motor inputs on the flight controller itself.
 
@@ -69,6 +69,7 @@ This transmits a radio signal which is picked up by the receiver on the drone.
   <img src=http://static1.squarespace.com/static/540b470be4b02405057761f4/5aa35ea68165f533f6f5051e/5aa38c4f08522936111380e4/1575904887238/?format=1500w />
 </p>
 Radio controllers can have a module bay to add different transmitter modules.
+
 ![logo](https://marketchangers.files.wordpress.com/2017/05/dsc7040.jpg?w=930)
 
 Most radio controllers can transmit around 6-12 channels with higher end controllers having up to 18 or more channels. Each channel has an analog value and corresponds to one control such as pitch, yaw or something else. To reduce the number of pinouts, there are protocols to transmit multiple channels on a single pin/wire such as sbus, ppm, cppm, etc.
