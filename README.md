@@ -1,18 +1,12 @@
 # Introduction to Dronery
 
-
-
-## Introduction
 This quick start guide should provide you with the basic knowledge needed to understand what is required to setup a basic drone. This **guide will not go into depth about all drone related topics but should provide a basis to allow you to understand how to read online documentation**. As the standards keep changing and manufacturers continue to release new products, **it is vital that you learn how to read online documentation and manuals**.
-
-
 
 ## Basic Components
 
 ![logo](https://hobbyshop247.com/image/cache/catalog/betafpv/drones/Beta75X/01-800x800.jpg)
 
 <center> **Placeholder for image of workshop drone**
-
 
 ## Propellers (Props)
 Firstly, the things that create lift, the propellers.  
