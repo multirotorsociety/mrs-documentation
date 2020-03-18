@@ -52,6 +52,10 @@ The batteries come with many different chemistries but generally we use LiPos (s
 
 This is made possible by the low resistance which is essential for the application of drones due to the high current that is drawn by the motors. As a result, a single short across the positive and negative wires is enough to kill the battery and cause an electrical fire due to the low internal resistance unlike AA/AAA batteries. **Special precaution has to be taken when handling lipos** to prevent puncture of cells or overcharge/discharge. 
 
+In terms of charging, the safest way to charge lipos is by 1A per 1000mah(battery capacity). So a 500mah battery would charge at 0.5A. This rate is 1C, different manufacturers can specify different charge and discharge rates for the battery but to preserve battery health a charge rate of 1C is advised.
+
+Specialised lipo chargers allow for charging to HV(4.35V instead of 4.2v) and some do not automatically set a safe current charging so do be careful about that.
+
 <p align="center">
   <img src="https://cdn-global-hk.hobbyking.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/1/7/176399_9067000273-0.jpg" />
 </p>  
