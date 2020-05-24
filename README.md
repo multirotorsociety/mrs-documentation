@@ -4,9 +4,7 @@ This quick start guide should provide you with the basic knowledge needed to und
 
 ## Basic Components
 
-![logo](https://hobbyshop247.com/image/cache/catalog/betafpv/drones/Beta75X/01-800x800.jpg)
-
-<center> **Placeholder for image of workshop drone**
+![logo](https://imgur.com/AxbRCdi.png)
 
 ## Propellers (Props)
 Firstly, the things that create lift, the propellers.  
