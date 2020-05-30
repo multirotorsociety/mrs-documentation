@@ -8,26 +8,26 @@ This quick start guide should provide you with the basic knowledge needed to und
 
 ## Propellers (Props)
 Firstly, the things that create lift, the propellers.  
-**This should always be put on LAST only after all other checks have been performed. ALWAYS CHECK WITH OTHERS BEFORE PUTTING ON PROPELLERS FOR MAIDEN FLIGHT. The propellers can gravely injure people.** 
+**This should always be put on LAST only after all other checks have been performed. ALWAYS CHECK YOUR SURROUNDINGS AND ASK SOMEONE WITH EXPERIENCE TO CHECK BEFORE PUTTING ON PROPELLERS FOR MAIDEN FLIGHT. The propellers can gravely injure people.** 
 
 <p align="center">
   <img src=https://imgur.com/oabVHUj.png />
   Betaflight default X-frame quadcopter prop configuration
 </p>
 
-You would notice that the Motors marked 1 and 4 spin anticlockwise and the Motors marked 2 and 3 spin clockwise. Before placing the propellers, **ensure that the correct CW/CCW propellers are used for the correct motors**. If the motors spin clockwise, the nut should be tightened anticlockwise(and vice versa). This prevents the propellers from loosening during flight.
+You would notice that the Motors marked 1 and 4 spin clockwise and the Motors marked 2 and 3 spin anticlockwise. Before placing the propellers, **ensure that the correct CW/CCW propellers are used for the correct motors**. If the motors spin clockwise, the nut should be tightened anticlockwise(and vice versa). This prevents the propellers from loosening during flight.
 
-When in doubt, refer to the documentation on the flightstack(betaflight) itself.
+Different frame configurations will have different motor directions. When in doubt, refer to the documentation on the flightstack(betaflight) itself.
 
 ## Power Distribution Board (PDB)
 Supplies power from the battery to the motors and converts the battery voltage to 5V for the flight controller, regulates power input to prevent the electronics onboard from damaging levels of power.
-Orientation of the PDB does not matter that much but the big solder pads for the battery terminals should be mounted in the right orientation so that the battery leads can be easily accessed.
+The PDB should be orientated such that the big solder pads for the battery terminals should be mounted in the right orientation so that the battery leads can be easily accessed.
 
 <p align="center">
   <img src=https://cdn.getfpv.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/f/c/fchub-6s_main.jpg />
 </p>
 
-Certain PDBs have S1,S2,S3,S4 connections which can be used to wire up motor PWM inputs. A ribbon cable or wire harness is used to connect the motor inputs to the main flight controller. However the purpose of this is to simplify wiring, there are ports to connect the motor inputs on the flight controller itself.
+Certain PDBs have S1,S2,S3,S4 connections which can be used to wire up motor PWM inputs. In this case, ensure that the S1,S2,S3,S4 corresponds to Motor1,M2,M3,M4. A ribbon cable or wire harness is used to connect the motor inputs to the main flight controller. However the purpose of this is to simplify wiring, there are ports to connect the motor inputs on the flight controller itself.
 
 ## Motors
 The Motors spin and generate thrust when used with the propellers. They have CW(clockwise) and CCW(Counter clockwise) orientations denoted by the colored screw caps which is threaded in the opposite direction from the rotation to self tighten and prevent propellers from flying out.
@@ -39,27 +39,31 @@ These motors can spin in the wrong direction, to fix that, either reverse it in 
 ## Electronic Speed Control(ESC)
 These circuits help to regulate the speed of the motors, they take a PWM signal from the flight controller and combine them with the high power from the PDB/Battery to allow for control of the motor.
 
-For smaller drones, you can find an esc all in one combined with a PDB or even built into the FC but for full sized drones a standalone ESC has to be used for each motor.
+For smaller drones, you can find an esc all in one combined with a PDB or even built into the FC but larger drones require a standalone ESC for each motor due to the high power drawn.
 
 All in one ESC Board            |  Standalone ESC
 :-------------------------:|:-------------------------:
 ![logo](https://cdn.getfpv.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/k/i/kiss-compactctrl-cc-all-in-one.jpg) |![logo](https://www.electricwingman.com/img/product/large/TMotorFlame60AESC4.jpg)
 
+On Standalone ESCs, There will be 3 motor wires on one side of the board, and 4/5 wires on the other side of the board. On the other side with 4/5 wires, two of the wires are for battery voltage and battery ground and will be soldered to the PDB. These wires are thicker than the other wires to carry more current. The other 2/3 wires are for signal/ground or signal/power/ground(ignore power for now). The signal should be plugged into the S1/S2/S3/S4 ports respectively and the ground can be plugged into any ground port.
+
+![logo](https://tocircuit.com/wp-content/uploads/2019/11/direct_bb-1024x346.png)
+
 ## Batteries (Lipo)
-The batteries come with many different chemistries but generally we use LiPos (short for Lithium Polymer). A single lipo cell can usually be used from 4.2 to 3.5V. Overdischarge or overcharge results in the battery spoiling. LiPos have a high rate of discharge given by the C rating on the battery which allows the motor to suck more current than regular batteries. 
+The batteries come with many different chemistries but generally we use the term LiPos(short for Lithium Polymer). A single lipo cell can usually be used from 4.2 to 3.5V. Overdischarge or overcharge results in the battery spoiling. LiPos have a high rate of discharge given by the C rating on the battery which allows the motor to suck more current than regular batteries. 
 
 This is made possible by the low resistance which is essential for the application of drones due to the high current that is drawn by the motors. As a result, a single short across the positive and negative wires is enough to kill the battery and cause an electrical fire due to the low internal resistance unlike AA/AAA batteries. **Special precaution has to be taken when handling lipos** to prevent puncture of cells or overcharge/discharge. 
 
 In terms of charging, the safest way to charge lipos is by 1A per 1000mah(battery capacity). So a 500mah battery would charge at 0.5A. This rate is 1C, different manufacturers can specify different charge and discharge rates for the battery but to preserve battery health a charge rate of 1C is advised.
 
-Specialised lipo chargers allow for charging to HV(4.35V instead of 4.2v) and some do not automatically set a safe current charging so do be careful about that.
+Lipo chargers allow for charging to HV(4.35V instead of 4.2v) and some do not automatically set a safe current/voltage when charging so do be careful about that.
 
 <p align="center">
   <img src="https://cdn-global-hk.hobbyking.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/1/7/176399_9067000273-0.jpg" />
 </p>  
 
 For long term storage, lipos have to be discharged to its nominal voltage which is usually around 3.7V.  
-This is known as **storage charging**
+This is known as **storage charging**.
 
 ## Radio Controllers/Transmitter
 This transmits a radio signal which is picked up by the receiver on the drone.
@@ -70,7 +74,7 @@ Radio controllers can have a module bay to add different transmitter modules.
 
 ![logo](https://marketchangers.files.wordpress.com/2017/05/dsc7040.jpg?w=930)
 
-Most radio controllers can transmit around 6-12 channels with higher end controllers having up to 18 or more channels. Each channel has an analog value and corresponds to one control such as pitch, yaw or something else. To reduce the number of pinouts, there are protocols to transmit multiple channels on a single pin/wire such as sbus, ppm, cppm, etc.
+Most radio controllers can transmit around 6-12 channels with higher end controllers having up to 18 or more channels. Each channel has an analog value and corresponds to one control such as pitch, yaw or something else. To reduce the need of having one signal and ground wire for each individual channel, protocols are used to transmit multiple channels on a single pin/wire (with 1 ground) such as sbus, ppm, cppm, etc. Documentation on the configuration required can be found by searching individual recievers and radio controllers.
 
 ## Receivers
 Receivers receive the radio input transmitted by the radio controller.
@@ -99,7 +103,7 @@ Also known as the Firmware, the Flight Stack is the software which runs on the F
 There are several popular Flight Stacks out there(some of which are forks of others) but the three main ones that we use are
 
 - [Betaflight](https://github.com/betaflight/betaflight/wiki) (_Used primarily for racing/simple crafts_)
-- [PX4](https://px4.io/) 
+- [PX4](https://px4.io/)
 - [Ardupilot](ardupilot.org)
 
 To configure these firmware's, these various software's are used:
@@ -107,7 +111,7 @@ To configure these firmware's, these various software's are used:
 - [QGroundControl for PX4](http://qgroundcontrol.com/)
 - [Mission Planner for Ardupilot](http://ardupilot.org/)
 
-For simple flying/racing, betaflight is used but for drones that requires additional sensors or intelligence, PX4 or Ardupilot is used. **We will be using betaflight for this workshop**.
+For simple flying/racing, betaflight is used but for drones that requires additional sensors or intelligence, PX4 or Ardupilot is used. **We will be using betaflight for this workshop**. The list of supported boards of each firmware is contionusly being updated on their individual websites.
 
 [go to top](#top)
 
@@ -140,7 +144,7 @@ WIP
 ## Supplementary
 
 ### Video Camera
-All the camera requires is 5v and ground and it will broadcast a 5.8Ghz signal. Certain flight controllers can output video signal which overlays readings such as battery level. There are different frequency ranges to ensure that multiple video feeds can be broadcasted at the same time.
+All the camera requires is 5v and ground and it will broadcast a 5.8Ghz signal. Certain flight controllers can output video signal which overlays information such as battery level. There are different channels and bands ensure that multiple video feeds can be broadcasted at the same time on different frequencies.
 
 ![logo](https://learnassets.getfpv.com/learn/wp-content/uploads/2019/09/19212447/frequencyChart.png)
 
