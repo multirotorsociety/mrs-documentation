@@ -79,7 +79,7 @@ Most radio controllers can transmit around 6-12 channels with higher end control
 ## Receivers
 Receivers receive the radio input transmitted by the radio controller.
 
-![logo](https://d2eqefissbzcnq.cloudfront.net/media/catalog/product/cache/1/image/800x800/9df78eab33525d08d6e5fb8d27136e95/f/r/frk-s8r.jpg)
+![logo](https://oscarliang.com/ctt/uploads/2017/08/compact-receiver-options-for-mini-quad-racing-drone-frsky-flysky-tbs-crossfire-futaba-spktrum-r9-2.4ghz-900mhz.jpg)
 
 There are many different transmission protocols made by different manufacturers such as Frsky,Flysky,Futaba,etc. All of which require a compatible transmitter(on the radio) and receiver talking on the same protocol. **Even within a same manufacturer, there are different protocols that are incompatible with each other**!
 
