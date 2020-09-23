@@ -163,6 +163,9 @@ Rate profile are given in curves, which allows for lower sensitivity and more pr
 
 ## Some videos for more advanced or indepth topics if you would like to know more
 [Electronic Speed Controllers (ESCs) and how they drive Brushless Motors](https://www.youtube.com/watch?v=-mLuU1Nscu4)
+
 [Understanding PID Control](https://www.youtube.com/playlist?list=PLn8PRpmsu08pQBgjxYFXSsODEF3Jqmm-y)
+
 [Drone Control Dynamics 1](https://www.youtube.com/watch?v=hGcGPUqB67Q)
+
 [Drone Control Dynamics 2](https://www.youtube.com/watch?v=GK1t8YIvGM8)
