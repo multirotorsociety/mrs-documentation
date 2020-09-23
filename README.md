@@ -160,3 +160,9 @@ PID controls the responsiveness and reaction of the quadcopter. This settings ar
 Rate controls the sensitivity of your drone from your transmitter. Higher rate means that the drone is move sensitive and moves faster while lower means the drone moves slower but gives more resolution on movements. The degrees/s at the end indicate how fast the drone can turn at full stick deflection in a given second. It is important to note that this rates do not control how to flight controller handles the drone but rather how sensitive your inputs on your radio transmitter are. 
 
 Rate profile are given in curves, which allows for lower sensitivity and more precise movements in the middle but the higher sensitivity at the end allows for the pilot to do large maneuvers when the sticks are deflected to the end.
+
+## Some videos for more advanced or indepth topics if you would like to know more
+[Electronic Speed Controllers (ESCs) and how they drive Brushless Motors](https://www.youtube.com/watch?v=-mLuU1Nscu4)
+[Understanding PID Control](https://www.youtube.com/playlist?list=PLn8PRpmsu08pQBgjxYFXSsODEF3Jqmm-y)
+[Drone Control Dynamics 1](https://www.youtube.com/watch?v=hGcGPUqB67Q)
+[Drone Control Dynamics 2](https://www.youtube.com/watch?v=GK1t8YIvGM8)
