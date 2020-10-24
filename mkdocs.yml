@@ -4,6 +4,14 @@ nav:
     - Documentation:
         - 'Introduction to Drones': 'introduction_to_drones.md'
 theme:
-    name: null
-    custom_dir: 'cinder'
-copyright: "The Cinder MkDocs theme is licensed under the <a href='https://github.com/chrissimpkins/cinder/blob/master/LICENSE.md'>MIT license"
+    name: material
+    palette: 
+        primary: light blue
+        accent: indigo
+    font:
+        text: Noto Sans
+    features:
+        - navigation.tabs
+    icon:
+        logo: material/quadcopter
+repo_url: https://github.com/multirotorsociety/Introduction-to-Drones
