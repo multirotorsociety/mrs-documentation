@@ -1,0 +1,17 @@
+site_name: MRS
+nav:
+    - Home: 'index.md'
+    - Documentation:
+        - 'Introduction to Drones': 'introduction_to_drones.md'
+theme:
+    name: material
+    palette: 
+        primary: light blue
+        accent: indigo
+    font:
+        text: Noto Sans
+    features:
+        - navigation.tabs
+    icon:
+        logo: material/quadcopter
+repo_url: https://github.com/multirotorsociety/Introduction-to-Drones
