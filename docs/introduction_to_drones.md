@@ -36,7 +36,7 @@ The Motors spin and generate thrust when used with the propellers. They have CW(
 
 These motors can spin in the wrong direction, to fix that, either reverse it in firmware (if the ESC supports it) or **swap any of the 2 motor wires**.
 
-## Electronic Speed Control(ESC)
+## Electronic Speed Controller (ESC)
 These circuits help to regulate the speed of the motors, they take a PWM signal from the flight controller and combine them with the high power from the PDB/Battery to allow for control of the motor.
 
 For smaller drones, you can find an esc all in one combined with a PDB or even built into the FC but larger drones require a standalone ESC for each motor due to the high power drawn.
@@ -50,7 +50,7 @@ On Standalone ESCs, There will be 3 motor wires on one side of the board, and 4/
 ![logo](https://tocircuit.com/wp-content/uploads/2019/11/direct_bb-1024x346.png)
 
 ## Batteries (Lipo)
-The batteries come with many different chemistries but generally we use the term LiPos(short for Lithium Polymer). A single lipo cell can usually be used from 4.2 to 3.5V. Overdischarge or overcharge results in the battery spoiling. LiPos have a high rate of discharge given by the C rating on the battery which allows the motor to suck more current than regular batteries. 
+The batteries come with many different chemistries but generally we use the term LiPos (short for Lithium Polymer). A single lipo cell can usually be used from 4.2 to 3.5V. Overdischarge or overcharge results in the battery spoiling. LiPos have a high rate of discharge given by the C rating on the battery which allows the motor to suck more current than regular batteries. 
 
 This is made possible by the low resistance which is essential for the application of drones due to the high current that is drawn by the motors. As a result, a single short across the positive and negative wires is enough to kill the battery and cause an electrical fire due to the low internal resistance unlike AA/AAA batteries. **Special precaution has to be taken when handling lipos** to prevent puncture of cells or overcharge/discharge. 
 
