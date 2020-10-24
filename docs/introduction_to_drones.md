@@ -43,7 +43,7 @@ For smaller drones, you can find an esc all in one combined with a PDB or even b
 
 All in one ESC Board            |  Standalone ESC
 :-------------------------:|:-------------------------:
-![logo](https://cdn.getfpv.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/k/i/kiss-compactctrl-cc-all-in-one.jpg) |![logo](https://www.electricwingman.com/img/product/large/TMotorFlame60AESC4.jpg)
+<img src="https://cdn.getfpv.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/k/i/kiss-compactctrl-cc-all-in-one.jpg" height="300" /> |<img src="https://www.electricwingman.com/img/product/large/TMotorFlame60AESC4.jpg" height="300" />
 
 On Standalone ESCs, There will be 3 motor wires on one side of the board, and 4/5 wires on the other side of the board. On the other side with 4/5 wires, two of the wires are for battery voltage and battery ground and will be soldered to the PDB. These wires are thicker than the other wires to carry more current. The other 2/3 wires are for signal/ground or signal/power/ground(ignore power for now). The signal should be plugged into the S1/S2/S3/S4 ports respectively and the ground can be plugged into any ground port.
 
@@ -135,11 +135,16 @@ The Receiver is connected to the Flight Controller.
 And thats it!!! With this connections and after configuration your drone should be able to fly.
 
 ## Betaflight configuration
+
 WIP
+
 ### ESC calibration
+
+TBA
 
 ### Radio calibration
 
+TBA
 
 ## Supplementary
 

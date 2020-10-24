@@ -1,0 +1,9 @@
+site_name: MRS
+nav:
+    - Home: 'index.md'
+    - Documentation:
+        - 'Introduction to Drones': 'introduction_to_drones.md'
+theme:
+    name: null
+    custom_dir: 'cinder'
+copyright: "The Cinder MkDocs theme is licensed under the <a href='https://github.com/chrissimpkins/cinder/blob/master/LICENSE.md'>MIT license"
