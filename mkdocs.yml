@@ -14,4 +14,6 @@ theme:
         - navigation.tabs
     icon:
         logo: material/quadcopter
-repo_url: https://github.com/multirotorsociety/Introduction-to-Drones
+repo_url: https://github.com/multirotorsociety/mrs-documentation
+repo_name: mrs-documentation
+edit_uri: ''
