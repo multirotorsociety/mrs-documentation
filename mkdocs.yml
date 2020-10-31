@@ -21,6 +21,7 @@ nav:
     - Documentation:
         - Introduction to Drones: 'introduction_to_drones.md'
         - Introduction to Advanced Drones: 'introduction_to_advanced_drones.md'
+        - AAVC Reference: 'AAVC_reference.md'
 
 markdown_extensions:
     - attr_list
