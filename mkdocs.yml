@@ -1,9 +1,9 @@
 site_name: MRS
-nav:
-    - Home: 'index.md'
-    - Documentation:
-        - Introduction to Drones: 'introduction_to_drones.md'
-        - Introduction to Advanced Drones: 'introduction_to_advanced_drones.md'
+
+repo_url: https://github.com/multirotorsociety/mrs-documentation
+repo_name: mrs-documentation
+edit_uri: ''
+
 theme:
     name: material
     palette: 
@@ -15,6 +15,14 @@ theme:
         - navigation.tabs
     icon:
         logo: material/quadcopter
-repo_url: https://github.com/multirotorsociety/mrs-documentation
-repo_name: mrs-documentation
-edit_uri: ''
+
+nav:
+    - Home: 'index.md'
+    - Documentation:
+        - Introduction to Drones: 'introduction_to_drones.md'
+        - Introduction to Advanced Drones: 'introduction_to_advanced_drones.md'
+
+markdown_extensions:
+    - attr_list
+    - pymdownx.highlight
+    - pymdownx.superfences
