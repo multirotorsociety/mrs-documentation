@@ -2,7 +2,8 @@ site_name: MRS
 nav:
     - Home: 'index.md'
     - Documentation:
-        - 'Introduction to Drones': 'introduction_to_drones.md'
+        - Introduction to Drones: 'introduction_to_drones.md'
+        - Introduction to Advanced Drones: 'introduction_to_advanced_drones.md'
 theme:
     name: material
     palette: 
