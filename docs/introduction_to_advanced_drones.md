@@ -1,18 +1,19 @@
-# Disclaimer
-This is a collection of notes I took down. Some of the information might be relevant to regular MRS drone competitions, SAFMC and AAVC. This is by no means extensive of what is needed to be known for those competitions or fully fact checked.
+# Introduction to ADVANCED Dronery
 
-# AAVC Reference
+**Disclaimer from the authors**  
+This is a collection of notes taken down by past and present MRS members. Some of the information might be relevant to regular drone competitions that MRS participates in, namely SAFMC and AAVC. This is by no means extensive of what is needed to be known for those competitions nor is it fully fact checked.
 
-[Facebook for announcements](https://www.facebook.com/groups/1014035222041487/)
-[Website for rules](https://iaai.asia/aavc_Rule.html)
+## AAVC (Autonomous Aerial Vehicle Competition) Reference  
+[Facebook for announcements](https://www.facebook.com/groups/1014035222041487/){: .md-button .md-button--primary }
+[Website for rules](https://iaai.asia/aavc_Rule.html){: .md-button .md-button--primary }
 
-**Admin**
+### Admin
 
-- Update prof about design and purchasing of items
-- Inform Crystal about overseas trip (once the team lineup is complete), there is alot of admin forms that need to be settled so do this before hand
+- Update prof about design and purchasing of items as early as possible
+- Inform Crystal (OSL) about overseas trip (once the team lineup is complete), there is alot of admin forms that need to be settled so do this before hand
 - To wrap the drone, get bubble wrap from ARMS office
 
-**Misc Rules and tips**
+### Misc Rules and tips
 
 - No autonomous payload(guided or mothership)
 - Rules might change on the spot
@@ -27,19 +28,18 @@ This is a collection of notes I took down. Some of the information might be rele
 - A cloth will be pasted on the injured area and the correct one will be face up
 - With analog video(and possible digital) the mannequins cannot be identified at 20m. The drone has to descent either manually or autonomously for human or AI detection as it is simply too small(with the default wide angle cameras). For AAVC 2020 the altitude was 2-45m not 20-45m.
 
-## Specing
+### Speccing
 For AAVC 2020 we speced the drone using the weight of the payload and the rough weight of the drone with generic parts. Then, we searched for efficient motors and high density batteries to fit the drone. The propellers and ESC are based on the motor requirements and the previously tested controllers were used for the FC and GPS. However, this might not be the ideal way to do it.
 
-Ecalc Guide: https://ecalc.ch/calcinclude/help/xcoptercalctutorial.htm
+[Ecalc Guide](https://ecalc.ch/calcinclude/help/xcoptercalctutorial.htm){.md-button .md-button--primary}
 
-## Some personal thoughts on frame and drone type in 2019
+### Some personal thoughts on frame and drone type in 2019
 IMO with motors becoming more powerful and efficient such as the T-Motor U line, at least for a drone with an overall weight of 15kg it makes more sense to use four of these motors in a quad configuration(instead of a hexa or octaquad) to reduce the power draw, complexity and weight. To achieve this efficiency, large propellers have to be used which increases the frame size. This makes CF Rods/Square Tubes an ideal choice of material(due to its accessibility and ease of fabrication) as CF plates are not stiff enough and heavy in larger sheets which makes it impractical to use as a frame the larger it gets. The use of CF Rods in commercial drone with large propellers such as the DJI Matrice and the Freefly Alta X shows that perhaps using CF Rods as arms might be the effective option.
 
 Two of the more common motor designs for the quadrotor class are the x-frame and the h-frame designs. These configurations do not directly define the body of the drones but influence the design of the supporting structures and hence indirectly the weight.
 Though there are many variations of motor configurations involving different distances between the motors, IMO the difference is negligible when flying missions as the weight distribution matters more. 
 
-![logo](
-https://i.imgur.com/UGWarda.jpg)
+![logo](https://i.imgur.com/UGWarda.jpg)
 
 IMO the x-frame configuration and its variants are harder to use as an test/mission platform over a h-frame/box-frame due to the following reasons.
 1) The h-frame/box-frame is more rigid as the body has more connected rods/joints than a x-frame. Trying to remedy this on a x-frame with more rods turns the design into effectively a h-frame. This is important considering the drone has to withstand abuse and crashes. This also ties in to the relatively easier construction/CAD of the h-frame which does not need to have angled parts or a fixed base plate unlike the x frame.
@@ -47,7 +47,10 @@ IMO the x-frame configuration and its variants are harder to use as an test/miss
 
 Dont take this as META, if you are reading this you probably are just starting out with drones so its okay to try something more tested but experimental drones will teach you more at the end of the day so dont be afraid to expierement.
 
-## Checks
+## Checklists
+
+Drone flying is an activity that has its fair share of troubleshooting required as well as hazards. The following checklists are practises that MRS Members have gained through experience to reduce the amount of troubleshooting required as well as to prevent accidents from happening
+
 ### Assembly Checks
 - Visual Inspection
 - Check Motors and ESC, number/pin and direction; Calibration
@@ -65,41 +68,45 @@ Dont take this as META, if you are reading this you probably are just starting o
 - Check FPV Camera Feed
 - Check clear of people and nearby hazards
 
-## Recommended Roles
-
+## Recommended Roles within Teams
 Pilot - flies drone/ operates RC transmitter
 Backup Pilot - might be required standing beside to the pilot for long range mission where the pilot flies FPV and the backup pilot can take over during LOS
 Ground Control - Observes and provides audio feedback to pilot regarding flight status, flight mode,  battery, error states, etc
 Spotter - ensures safety of other people and the surrounding, eg weather condition, birds, other drones, intervenes only if there is threat to mission or nearby people
 FPV - for spotting objects/mannequin during mission
 
-# Mission Planner vs QGC
-
+## Mission Planner vs QGC
 There are differences between PX4 and Ardupilot and their target platforms which can be found online. To simplify things for now all you need to know is that Ardupilot is a flight control software in which Mission Planner is the program you download to configure it while PX4 is yet another flight control software in which QGroundControl(QGC) is the program used to configure it. Hardware wise usually the same flight controllers are compatible with both of them but Ardupilot seems to support newer sensors faster.
 
 In AAVC 2020, we used Ardupilot for two main reasons
 
-- 1) Auto PID Tuning on Ardupilot
-  Ardupilot allows for automatic PID Tuning which can be bound to a switch under the config/tuning-> extended tuning page. Param AUTOTUNE_AXES can be set to individually tune one axis at a time so that the battery does not run flat. The drone has to be landed while in PID Mode for the PID to be saved.[Link](https://ardupilot.org/copter/docs/autotune.html)
-  This saves alot of time normally spent tuning(especially as beginners) as it is hard to tune large drones in SUTD
+1. Auto PID Tuning on Ardupilot  
+Ardupilot allows for automatic PID Tuning which can be bound to a switch under the config/tuning-> extended tuning page. Param AUTOTUNE_AXES can be set to individually tune one axis at a time so that the battery does not run flat. The drone has to be landed while in PID Mode for the PID to be saved.[Link](https://ardupilot.org/copter/docs/autotune.html)
+This saves alot of time normally spent tuning(especially as beginners) as it is hard to tune large drones in SUTD
 
-- 2) Servo Release without Mixing
-  Ardupilot has many presets for mixing the main and auxiliary outputs as unlike PX4 which required mixing for actuation of a servo. By making use of the camera shutter functionality, the payload can be triggered via DIGICAM_CONTROL during missions or bound to a switch. On the pixhawk cube (2), RC8 is Main 8 and RC9 is Aux 1, RC10 is Aux 2, etc... [Link](https://ardupilot.org/copter/docs/common-servo.html). Importantly, the RC ports on the pixhawk can all be set as either input or output. The RCx params control the input behaviour, but when RCx_OPTION is set to 0, the port is set as an an output with the output behaviours being controlled by [the servo params](https://ardupilot.org/copter/docs/common-rcoutput-mapping.html). This includes the 4 motor pins which are automatically mixed from the 4 RC Inputs(throttle,yaw,pitch,roll) into the individual servo1,servo2,servo3,servo4 outputs.
+2. Servo Release without Mixing  
+Ardupilot has many presets for mixing the main and auxiliary outputs as unlike PX4 which required mixing for actuation of a servo. By making use of the camera shutter functionality, the payload can be triggered via DIGICAM_CONTROL during missions or bound to a switch. On the pixhawk cube (2), RC8 is Main 8 and RC9 is Aux 1, RC10 is Aux 2, etc... [Link](https://ardupilot.org/copter/docs/common-servo.html). Importantly, the RC ports on the pixhawk can all be set as either input or output. The RCx params control the input behaviour, but when RCx_OPTION is set to 0, the port is set as an an output with the output behaviours being controlled by [the servo params](https://ardupilot.org/copter/docs/common-rcoutput-mapping.html). This includes the 4 motor pins which are automatically mixed from the 4 RC Inputs(throttle,yaw,pitch,roll) into the individual servo1,servo2,servo3,servo4 outputs.
 
-   The full range of Auxiliary Functions can be found [here](https://ardupilot.org/copter/docs/common-auxiliary-functions.html).
+The full range of Auxiliary Functions can be found [here](https://ardupilot.org/copter/docs/common-auxiliary-functions.html).
 
-*Other Advantages*
-Ardupilot tends to be less anal about GPS errors compared to PX4 and Mission Planner also displays the errors too unlike QGC.
-Increased number of survey patterns and waypoint options. Spline waypoints provide a smooth path but are not required in missions.
-The amount of auxiliary functions(RCx_OPTION) that can be bound in Ardupilot without much additional effort.
-Out of the box support for obstacle avoidance with multiple sensors
-Support for less sensors. Atm it seems like ardupilot is being updated to support newer sensors more frequently than px4.
-More mission types in Ardupilot as compared to QGC
+**Other Advantages**
 
-# Mission Planner
++ Ardupilot tends to be less anal about GPS errors compared to PX4 and Mission Planner also displays the errors too unlike QGC.
+
++ Increased number of survey patterns and waypoint options. Spline waypoints provide a smooth path but are not required in missions.
+
++ The amount of auxiliary functions(RCx_OPTION) that can be bound in Ardupilot without much additional effort.
+
++ Out of the box support for obstacle avoidance with multiple sensors
+
++ Support for less sensors. Atm it seems like ardupilot is being updated to support newer sensors more frequently than px4.
+
++ More mission types in Ardupilot as compared to QGC
+
+## Mission Planner
 Heres a brief overview of mission planner which should aid in setting up basic missions for competitions.
 
-## User Interface and Mission Setup
+### User Interface and Mission Setup
 ![logo](https://i.imgur.com/NdZn8ve.png)
 Near the left side of mission planner, there is a list of readings that can be changed by double clicking on it. Under Actions tab there are buttons for Takeoff, RTL, shutter, etc
 
@@ -135,16 +142,10 @@ VLC allows for a usb vtx or another video source to be overlaid.
 
 [This video provides some other useful tips of hidden Mission Planner Features.](https://www.youtube.com/watch?v=yUV8B-9c6d8)
 
-
-
-
-## Misc Tips
+### Misc Tips
 BRD_SAFETYENABLE needs to be set to 0 for ESC calibration(else a safety switch needs to be connected),CBRK_IO on newer firmware
 
-
-
-# Setting up Autonomous Flight Modes
-
+## Setting up Autonomous Flight Modes
 Below are the required calibrations for autonomous flight. Importantly, tuning the parameters should not be done solely visually, but with the help of the live graphs and the logs. It is important for the flight controller to be able to respond correctly to reach its target setpoint. When flying manually it might not be as apparent that params are incorrect as we have to benefit of correcting visually.
 
 QGC Logs location            |  Mission Planner Logs Location
@@ -153,15 +154,29 @@ QGC Logs location            |  Mission Planner Logs Location
 
 Ardupilot logs can be reviewed on the app but for PX4 has this nice website [to review logs](https://logs.px4.io/).
 
-## Mavlink
+## MAVLink
+MAVLink is the underlying protocol used for communication with the drone as well as within the drone. This is the de facto industry standard used by many components and the software which run on them. As such, do note that alot of the common errors can be diagnosed via MAVLink messages and more advanced functionality such as high level autonomy are built upon it. With MAVLink, sensors and components can speak to each other through this messaging protocol, making integration of components on a drone much easier. Notably, this standard protocol also allows for packages such as Mavros to interface ROS with flight controllers to allow for autonomous flight related features.
 
-**fact checking needed** Mavlink is the underlying protocol for communication with the drone. As such, do note that alot of the common errors can be diagnosed via mavlink messages and more advanced functionality such as automation are built upon it. PX4 and Ardupilot both utilise it. With mavlink, sensors can speak to each other and broadcast messages, etc ??? This standard protocol also allows for packages such as Mavros to interface ROS with flight controllers with allow for autonomy related features.
+A short list of notable hardware and software which support MAVLink
++ Any flight controller running
+  + Ardupilot
+  + PX4
++ Any computer running
+  + QGroundControl
+  + MissionPlanner
+  + MAVROS
+  + Program written with MAVSDK
++ Various Camera Gimbal/Gimbal Controllers supporting MAVLink
++ Arduino   
 
 https://mavlink.io/en/about/implementations.html
 
-[Heres a list of mavlink commands](https://dev.px4.io/v1.9.0/en/middleware/modules_command.html) to help with debugging in QGC with PX4(Ardupilot seems to have discontinued it). The listener <device> command is pretty useful to check if a sensor is publishing data(eg listener optical_flow, listener uavcan). Sensors can be manually started and stopped(eg tfmini start, tfmini status, tfmini stop).
+### Degbugging PX4 using MAVLink Shell
+The MAVLink Shell is the Nutt Shell (running on NuttX RTOS that PX4 is built upon) accessed through MAVLink.
 
-## Mavlink Inspector
+[Heres a list of mavlink commands](https://dev.px4.io/v1.9.0/en/middleware/modules_command.html) to help with debugging PX4 with QGC (Ardupilot seems to have discontinued it). The listener <device> command is pretty useful to check if a sensor is publishing data(eg listener optical_flow, listener uavcan). Sensors can be manually started and stopped(eg tfmini start, tfmini status, tfmini stop).
+
+### Mavlink Inspector
 An important diagnostic tool easily overlooked is the mavlink inspector. This can be used to observe various mavlink values in real-times which is useful for tuning stuff like altitude hold/setpoint. Both GCS have the ability to graph multiple values live which are helpful to validate the changing values.
 
 The full descriptions of [mavlink messages](https://mavlink.io/en/messages/common.html#MAV_CMD) can be found here. Understanding it is essential for autonomous flight modes with ROS or dronekit. Mavlink messages can be sent too in both [Mission Planner](https://ardupilot.org/dev/docs/commonmission-planner-command-line-interface-cli.html) and [QGC](https://docs.qgroundcontrol.com/en/analyze_view/mavlink_console.html) which can carry out any task such as arming or enabling range sensor drivers.
@@ -177,17 +192,15 @@ The Mavlink port can be broadcasted over a local network which allows you to con
 ## PID TUNING
 Ensure that the PID tuning is stable by checking the response curves for the pitch and roll graphs before attempting to fly in mission/auto flight modes. Overshooting the setpoints will result in oscillations and crashes. It takes time and experience to get the tune right. However, many other factors such as lack of dampening can cause excessive vibrations too, do take note about this before attempting to get a perfect tune.
 
-https://docs.px4.io/v1.9.0/en/config_mc/pid_tuning_guide_multicopter.html
+[PX4 PID Tuning Guide for Multicopters](https://docs.px4.io/v1.9.0/en/config_mc/pid_tuning_guide_multicopter.html)
 There are 3 sections, go read through the first 2 unless a crash is desired.
-https://oscarliang.com/quadcopter-pid-explained-tuning/
+[PID Tuning Explained by Oscarliang](https://oscarliang.com/quadcopter-pid-explained-tuning/)
 [Sample AAVC Test Flight with bad tuning and many oscillations](https://review.px4.io/plot_app?log=b51cbfc0-fb20-46d7-8d30-5252743e3eb2)
 
 ### The Ardupilot PID Autotune Shortcut
 Ardupilot has this rather convenient feature that allows it to autotune the PID in an open area. Ensure that altitude mode works first before binding the autotune function to a switch. The drone will use step inputs to determine the ideal rates for a sharp response. The AUTOTUNE_AXES param can be changed if your drone does not have enough battery life to tune all axis at once. It is highly recommended to use a GPS as this will allow the drone to maintain position despite windy conditions when autotune is activated from position hold.
 
 PID tuning only starts when both sticks are centered so the throttle will be at 50%, so ensure that altitude hold and hover throttle is tuned properly, more information below.
-
-
 
 Here are some very brief notes regarding PID tuning, much more indepth information is available online.
 
@@ -198,29 +211,27 @@ Firstly, use quick impulse inputs and tune for roll->pitch->yaw one axis at a ti
 
 The pid graph in PX4 is under Tuning-> Advanced Perimeters. The estimated(Red) is the actual position of the craft while the setpoint(green) is what is desired, therefore the setpoint should hug the estimated as close as possible.
 
-### 1) P, maximum value possible
+#### 1) P, maximum value possible
 **_Response_**
 Too high - high frequency oscillations(it will be both visible and audible)
 Too low - vehicle reacts too slowly
 
 *Increase value until right before it starts oscillating in high frequency* 
 
-### 2) D, minimum value possible
+#### 2) D, minimum value possible
 **_Dampening_**
 Too high - motors become twitchy and hot(because it overcorrects too quickly, which creates high frequency noise)
 Too low - overshoot after step input
 
 *Find Minimum value required so that it corrects quickly(see from graph) even after large step inputs*
 
-### 3) I, balanced
+#### 3) I, balanced
 **_Error_** 
 Too high - slow oscillations ( as it slowly tries to correct)
 Too low - drift, HIGH FREQUENCY OSCILLATION AFTER STEP INPUT
 
 *Increase if drifts in wind/external conditions, decrease if it corrects too slowly/little*
 *Recommended values are 0.3-0.5 on PX4 wiki*
-
-
 
 Arguably, this is one of the hardest parts of setting up a drone as it requires experience to isolate and identify the actual response.
 
@@ -229,8 +240,6 @@ Isolate - ideally speaking, tuning should be done in an indoor environment witho
 Identify - One common issue is identifying high frequency oscillations from low frequency oscillations when first starting out. The default PIDs from PX4 are deliberately set low for safety but it can be more than doubled on some drones. The biggest tell of high frequency oscillations is that it should be very hard to even take off(unlike low frequency which is still often possible). The drone should both visibly and audibly be constantly vibrating and trying to correct, with little or not control as a result. 
 
 As one might be unable to differentiate high from low frequency oscillations when tuning for the first time, the P tuning might be stopped at a much lower value than what the craft is actually capable of. Considering the size and price of the platform, it is understandable why this is more of an issue as compared to tuning an acro quad. Hence, it maybe useful to do a preliminary tuning of P,D,I and after it is sufficiently stable continue trying to increase P until it is uncontrollable.
-
-
 
 The live graphs for PID tuning can be found from the advanced option under the tuning tab.
 ![logo](https://i.imgur.com/Vz8bNGC.png)
@@ -254,21 +263,20 @@ This graph looks pretty okay but the response looks abit slow so the I can be re
 TBC
 
 ## Compass
+Work in progress
 
-## Positioning
+## Positioning and Navigation
 It should self explanatory why positioning is important for autonomous flight modes. **DO ENSURE THAT ALL THE AUTONOMOUS FLIGHT MODE SPEEDS ARE TURNED DOWN** before attempting first flight.
 ### Outdoor
-As compared to indoor navigation, autonomous outdoor navigation is relatively trivial as it can be accomplished with a gps so long as the drone has view of the sky throughout the mission.
+As compared to indoor navigation, autonomous outdoor navigation is relatively trivial as it can be accomplished with GPS position data and GPS waypoints so long as the drone has view of the sky throughout the mission to get GPS signals.
 ### Indoor
 However, if the drone is required to fly in tunnels or buildings where GPS cannot attain lock, other methods to position and localize the drone are needed.
 
 [This is a super handy link in ardupilot wiki](https://ardupilot.org/copter/docs/common-non-gps-navigation-landing-page.html) regarding commonly used sensors for indoor navigation. Amongst those which are used before are the [Intel T265](https://ardupilot.org/copter/docs/common-vio-tracking-camera.html) (which has a in-depth walkthrough in the link) and the [Optical Flow sensors](https://ardupilot.org/copter/docs/common-optical-flow-sensors-landingpage.html) (do ensure to check the optical flow setup link for the full instructions).
 
-The Ardupilot wiki page you mainly mentions optical or beacon based tracking solutions with the exception being cartographer with lidar(at time of writing)
+The Ardupilot wiki page mainly mentions optical or beacon based tracking solutions with the exception being cartographer with lidar(at time of writing)
 
 Further details on optical flow configuration are given in the respective Ardupilot and PX4 sections.
-
-
 
 ## Altitude Hold
 An important prerequisite to position hold is the altitude hold. Do note that (IIRC) both Ardupilot and PX4 do not have a param to change the radio controller throttle % at which it occurs and it always occurs when your radio controller is physically at 50% throttle. The settings altered simply changes the value of the throttle pwm value in which the flightstack tries to hover around. Hence, at 50% (+- whatever threshold is set) should allow it to hover and below 50% should activate a velocity based descent depending on how much the sticks are pushed down and above 50% should ascent the drone.
@@ -276,7 +284,7 @@ An important prerequisite to position hold is the altitude hold. Do note that (I
 In Ardupilot, [Hover Throttle is automatically learnt](https://ardupilot.org/copter/docs/ac_throttlemid.html#ac-throttlemid) but can still be set manually if desired.
 
 Now that the desired performance is explained, tuning for this axis can occur.
-First, attempt to hover the drone while observing the throttle value required in the Mavlink inspector. Set this value as the hover throttle value. (PX4: MPC_THR_HOVER). The params are found under MPC(multicopter position control) in px4.
+First, attempt to hover the drone while observing the throttle value required in the Mavlink inspector. Set this value as the hover throttle value. (PX4: MPC_THR_HOVER). The params are found under MPC(multicopter position control) in PX4.
 
 In PX4, hover throttle can be changed with this slider. There is a param for this value but more testing is needed to determine if the param changes anything else.
 ![logo](https://i.imgur.com/gHkHTEX.png)
@@ -291,7 +299,7 @@ Next, the hover throttle threshold can be set and the throttle gain can tuned to
 
 One important feature of autonomous flight modes is the ability to not crash into obstacles. While rudimentary implementations allow for collision detection, where it [stops infront of objects and multiple obstacle sensors for 360 coverage](https://ardupilot.org/dev/docs/code-overview-object-avoidance.html), increasingly [**ardupilot**](https://ardupilot.org/copter/docs/common-object-avoidance-landing-page.html) and [**px4**](https://docs.px4.io/master/en/computer_vision/collision_prevention.html) have implemented more parameters and algorithms to allow for dynamic path planning so that the drone can move around obstacles. These features are constantly being worked on, so do check the page for updates. In some cases in Ardupilot and [PX4](https://docs.px4.io/master/en/sensor/cm8jl65_ir_distance_sensor.html), specific sensors can be connected directly to the flight controller for obstacle avoidance but(currently) in most of the cases the obstacle avoidance is [done on a companion computer running ROS](https://ardupilot.org/copter/docs/common-realsense-depth-camera.html#common-realsense-depth-camera).
 
-# Indoor Autonomous Flight for Ardupilot(WIP)
+## Indoor Autonomous Flight for Ardupilot(WIP)
 Ekf3 must be used instead of ekf2
 Homepoint and ekf3 origin must be set on map before each flight, the drone icon should physically show up along with its heading.
 
@@ -301,29 +309,29 @@ On the topic of sensors and compasses, remember that you can change the orientat
 
 (Unrelated) You can define which CAN Driver to use under a CAN port, [CAN_P1_DRIVER can be used on either physical port](https://ardupilot.org/copter/docs/parameters.html#can-p1-driver)
 
-# Misc sensor reference for Ardupilot
-## ProfiCNC mini carrier board pinout
+## Misc sensor reference for Ardupilot
+### ProfiCNC mini carrier board pinout
 [Mini carrier board pinout](https://discuss.ardupilot.org/t/pixhawk-2-1-cube-mini-carrier-board-questions/33529/23)
 [Alternate link](https://docs.cubepilot.org/user-guides/carrier-boards/mini-carrier-board)
 
 
-## Obstacle Avoidance Sensors
+### Obstacle Avoidance Sensors
 Most ultrasonic obstacle avoidance sensors comes with an analog value which is scaled based on distance and either a serial or I2C port depending on the version. I2C allows for multiple sensors to be chained together.
 
-Looking at the RNGFNDx pin on the Ardupilot config, either the **ANALOG** can be used via the ADC port or **PWM** can be used when plugged into any of the auxiliary ports. However, due to the restriction of only one ADC port on the pixhawk, only one rangefinder can be used via ADC. The only sensor listed on the documentation capable of PWM OUTPUT is the [Lidarlite](https://ardupilot.org/copter/docs/common-rangefinder-lidarlite.html). This leaves object avoidance with multiple sensors implementation via I2C or Serial. Using this method, since ADC or Analog is not used, the RNGFND param does not have to be changed. 
+Looking at the RNGFNDx pin on the Ardupilot config, either the `ANALOG` can be used via the ADC port or `PWM` can be used when plugged into any of the auxiliary ports. However, due to the restriction of only one ADC port on the pixhawk, only one rangefinder can be used via ADC. The only sensor listed on the documentation capable of `PWM` output is the [Lidarlite](https://ardupilot.org/copter/docs/common-rangefinder-lidarlite.html). This leaves object avoidance with multiple sensors implementation via I2C or Serial. Using this method, since ADC or Analog is not used, the RNGFND param does not have to be changed. 
 
 ![logo](https://imgur.com/DcevgxM.png)
 
 Most of the params are self explanatory and configuration can be found on the ardupilot wiki page itself. However, note that [certain libraries such as the Maxbiotix library might not be able to support multiple sensors](https://discuss.ardupilot.org/t/multiple-maxbotix-i2c-pixhawk-2-1-problem/35177/34), more testing is required.
 
-[MaxBiotix MB1200](https://www.maxbotix.com/Ultrasonic_Sensors/MB1200.htm) (I2C Version is MB1202)
+[MaxBotix MB1200](https://www.maxbotix.com/Ultrasonic_Sensors/MB1200.htm) (I2C Version is MB1202)
 The maxbiotix website only shows how to interface a single sensor for terrain following via [analog](https://www.maxbotix.com/articles/ultrasonic-sensors-pixhawk-ardupilot.htm).
 
 The obstacle avoidance can be tested under the proximity button by hitting ctrl-f. [More information here](https://ardupilot.org/dev/docs/code-overview-object-avoidance.html).
 
-## Optical Flow and Lidars
+### Optical Flow and Lidars
 
-**[READ THIS FIRST]**(https://ardupilot.org/copter/docs/common-optical-flow-sensor-setup.html), in addition to the sensor specific setup.
+[**READ THIS FIRST**](https://ardupilot.org/copter/docs/common-optical-flow-sensor-setup.html), in addition to the sensor specific setup.
 
 Do note that similar to PX4. A downward facing distance sensor is **required** for optical flow.
 
@@ -345,24 +353,23 @@ Here are the list of the flow params.
 ![logo](https://imgur.com/2CvDwOD.png)
 *Example of bad tracking*
 
-# PX4 Reference
+## PX4 Reference
 
-## Full list of Config
+### Full list of Config
 
-http://docs.px4.io/v1.9.0/en/advanced_config/parameter_reference.html
+<http://docs.px4.io/v1.9.0/en/advanced_config/parameter_reference.html>
 
-## Flight Modes
-Manual/Stabilized - same for multi rotors, transmit pitch and roll commands to output mixer, output mixer also returns drone to an angle of zero when joysticks are centered.
-Acro - transmit angular rates(how fast to go to an angle)
-Position - Same as manual/stabilized but tries to correct for wind. May cause crash on larger drones if PID is not tuned properly as will start oscillating. **Exiting Mission mode through max throttle will automatically [change the mode to position mode](https://github.com/PX4/px4_user_guide/blob/master/en/getting_started/flight_modes.md)**
+### Flight Modes
 
-https://dev.px4.io/v1.9.0/en/concept/flight_modes.html
++ Manual/Stabilized - same for multi rotors, transmit pitch and roll commands to output mixer, output mixer also returns drone to an angle of zero when joysticks are centered.
++ Acro - transmit angular rates(how fast to go to an angle)
++ Position - Same as manual/stabilized but tries to correct for wind. May cause crash on larger drones if PID is not tuned properly as will start oscillating. **Exiting Mission mode through max throttle will automatically [change the mode to position mode](https://github.com/PX4/px4_user_guide/blob/master/en/getting_started/flight_modes.md)**
 
+Reference: <https://dev.px4.io/v1.9.0/en/concept/flight_modes.html>
 
-
-
-## GPS and EKF
+### GPS and EKF
 The Estimation and Control Library (ECL) uses an Extended Kalman Filter (EKF) algorithm to process sensor measurements and provide an estimate of the following states:
+
 -	Quaternion defining the rotation from North, East, Down local earth frame to X,Y,Z body frame
 -	Velocity at the IMU - North,East,Down (m/s)
 -	Position at the IMU - North,East,Down (m)
@@ -395,68 +402,79 @@ ECL library can be used with better performance but requires knowledge in tuning
 The following errors (with associated checks and parameters) are reported by the EKF (and propagate to QGroundControl):*
 
 **PREFLIGHT FAIL: EKF HGT ERROR:**
+
 -	This error is produced when the IMU and height measurement data are inconsistent.
 -	Perform an accel and gyro calibration and restart the vehicle. If the error persists, check the height sensor data for problems.
 -	The check is controlled by the COM_ARM_EKF_HGT parameter.
 
 **PREFLIGHT FAIL: EKF VEL ERROR:**
+
 -	This error is produced when the IMU and GPS velocity measurement data are inconsistent.
 -	Check the GPS velocity data for un-realistic data jumps. If GPS quality looks OK, perform an accel and gyro calibration and restart the vehicle.
 -	The check is controlled by the COM_ARM_EKF_VEL parameter.
 
 **PREFLIGHT FAIL: EKF HORIZ POS ERROR:**
+
 -	This error is produced when the IMU and position measurement data (either GPS or external vision) are inconsistent.
 -	Check the position sensor data for un-realistic data jumps. If data quality looks OK, perform an accel and gyro calibration and restart the vehicle.
 -	The check is controlled by the COM_ARM_EKF_POS parameter.
 	
 
 **PREFLIGHT FAIL: EKF YAW ERROR:**
+
 -	This error is produced when the yaw angle estimated using gyro data and the yaw angle from the magnetometer or external vision system are inconsistent.
 -	Check the IMU data for large yaw rate offsets and check the magnetometer alignment and calibration.
 -	The check is controlled by the COM_ARM_EKF_POS parameter
 
 **PREFLIGHT FAIL: EKF HIGH IMU ACCEL BIAS:**
+
 -	This error is produced when the IMU accelerometer bias estimated by the EKF is excessive.
 -	The check is controlled by the COM_ARM_EKF_AB parameter.
 
 **PREFLIGHT FAIL: EKF HIGH IMU GYRO BIAS:**
+
 -	This error is produced when the IMU gyro bias estimated by the EKF is excessive.
 -	The check is controlled by the COM_ARM_EKF_GB parameter.
 
 **PREFLIGHT FAIL: ACCEL SENSORS INCONSISTENT - CHECK CALIBRATION:**
+
 -	This error message is produced when the acceleration measurements from different IMU units are inconsistent.
 -	This check only applies to boards with more than one IMU.
 -	The check is controlled by the COM_ARM_IMU_ACC parameter.
 
 **PREFLIGHT FAIL: GYRO SENSORS INCONSISTENT - CHECK CALIBRATION:**
+
 -	This error message is produced when the angular rate measurements from different IMU units are inconsistent.
 -	This check only applies to boards with more than one IMU.
 -	The check is controlled by the COM_ARM_IMU_GYR parameter.
 
 **PREFLIGHT FAIL: COMPASS SENSORS INCONSISTENT - CHECK CALIBRATION:**
+
 -	This error message is produced when the difference in measurements from different compass sensors is too great.
 -	It indicates bad calibration, orientation or magnetic interference.
 -	This check only applies to when more than one compass/magnetometer is connected.
 -	The check is controlled by the COM_ARM_MAG parameter.
 
 **PREFLIGHT FAIL: EKF INTERNAL CHECKS:**
+
 -	This error message is generated if the innovation magnitudes of either the horizontal GPS velocity, magnetic yaw, vertical GPS velocity or vertical position sensor (Baro by default but could be range finder or GPS if non-standard parameters are being used) are excessive. Innovations are the difference between the value predicted by the inertial navigation calculation and measured by the sensor.
 -	Users should check the innovation levels in the log file to determine the cause. These can be found under the ekf2_innovations message. Common problems/solutions include:
-IMU drift on warmup. May be resolved by restarting the autopilot. May require an IMU accel and gyro calibration.
--	Adjacent magnetic interference combined with vehicle movement. Resolve my moving vehicle and waiting or re-powering.
--	Bad magnetometer calibration combined with vehicle movement. Resolve by recalibrating.
--	Initial shock or rapid movement on startup that caused a bad inertial nav solution. Resolve by restarting the vehicle and minimizing movement for the first 5 seconds.
+    - IMU drift on warmup. May be resolved by restarting the autopilot. May require an IMU accel and gyro calibration.
+    - Adjacent magnetic interference combined with vehicle movement. Resolve my moving vehicle and waiting or re-powering.
+    - Bad magnetometer calibration combined with vehicle movement. Resolve by recalibrating.
+    - Initial shock or rapid movement on startup that caused a bad inertial nav solution. Resolve by restarting the vehicle and minimizing movement for the first 5 seconds.
 
 
 ### Other Parameters
 The following parameters also affect preflight checks.
 
-**COM_ARM_WO_GPS**
-The COM_ARM_WO_GPS parameter controls whether or not arming is allowed without a global position estimate.
--	1 (default): Arming is allowed without a position estimate for flight modes that do not require position information (only).
--	0: Arming is allowed only if EKF is providing a global position estimate and EFK GPS quality checks are passing
+**COM_ARM_WO_GPS**  
+The `COM_ARM_WO_GPS` parameter controls whether or not arming is allowed without a global position estimate.
 
-**COM_ARM_EKF_YAW**
+- 1 (default): Arming is allowed without a position estimate for flight modes that do not require position information (only).
+- 0: Arming is allowed only if EKF is providing a global position estimate and EFK GPS quality checks are passing
+
+**COM_ARM_EKF_YAW**  
 The COM_ARM_EKF_YAW parameter determines the maximum difference (in radians) between the navigation yaw angle and magnetic yaw angle (magnetometer or external vision) allowed before preflight checks fail. The default value of 0.5 allows the differences to be no more than 50% of the maximum tolerated by the EKF and provides some margin for error increase when flight commences. It can fail if the yaw gyro has a large offset or if the vehicle is moved or rotated in the presence of a bad magnetic interference or magnetometer calibration.
 
 ## PX4 Sensors
@@ -476,8 +494,10 @@ By default on 1.8.2, PX4 reads the rangefinder port at **SERIAL4/GPS2** which co
 Ensure that SENS_EN_TFMINI is activated depending on firmware version. RNG AID should be enabled too.
 Use the mavlink console to probe if the driver is running.
 
-- tfmini start -d /dev/tty/S6
-- tfmini status
+``` shell
+tfmini start -d /dev/tty/S6
+tfmini status
+```
 
 EKF2_HGT_Mode can be set to range sensor but be sure to test in a safe environment, it might be safer to use baro as the main height sensor.
 EKF2_RNG_AID can also be enabled to reduce the barometer inaccuracies caused by ground effect if the range sensor is not the primary sensor.
@@ -497,11 +517,13 @@ Aside from that, diagnosing flow issues are abit harder due to the lack of feedb
 Take note that on pre 2019 pixhawk 2.1 boards the can 1 and can 2 boards are swapped. The hereflow should be plugged in on the can 1 port by default.
 
 The following links contain the required perimeters for it.
-https://discuss.px4.io/t/hereflow-sensor-with-uavcan-not-responding/14694
-https://github.com/PX4/px4_user_guide/blob/c03a25be2724e5d89e9ece47425423d5cd100a1d/en/sensor/pmw3901.md
+
++ [Hereflow](https://discuss.px4.io/t/hereflow-sensor-with-uavcan-not-responding/14694)
++ [PMW3901](https://github.com/PX4/px4_user_guide/blob/c03a25be2724e5d89e9ece47425423d5cd100a1d/en/sensor/pmw3901.md)
+
 Do note that as of 1.10 the downward rangefinder does not seem to be supported. Hence, a seperate downward facing rangefinder might be needed.
 
-The status of the hereflow can be checked with the mavlink commands ***uavcan status*** and ***listener optical_flow***. Do note that the optical flow mavlink messages are not be broadcasted over telem(inre  PX4) by deafult to save bandwidth.
+The status of the hereflow can be checked with the mavlink commands `UAVCAN status` and `listener optical_flow`. Do note that the optical flow mavlink messages are not broadcasted over telem(in PX4) by default to save bandwidth.
 
  [Do note that the x and y axis in the hereflow manual seems to be swapped in px4](https://discuss.cubepilot.org/t/hereflow-setup-instructions-alpha-batch/341) 
 
@@ -510,9 +532,10 @@ Personally, I had issues getting the hereflow to work in the horizontal position
 ### Here+/2 GPS
 **Considerations**
 *These errors show up as generic errors in qgc and is not diagnosable via logs*
+
 - Ideally the base and rover antenna to have clear view of the sky that is 30 degrees above horizon.
 - To attain GPS lock look for open spaces with view of sky instead of indoor areas
-- **Place GPS away from other electronic devices which generate noise. Eg, FC, other antennas, wifi antennas, power transformers  and anything that emits EM/radio waves.** https://ardupilot.org/copter/docs/common-magnetic-interference.html#common-magnetic-interference
+- **Place GPS away from other electronic devices which generate noise. Eg, FC, other antennas, wifi antennas, power transformers  and anything that emits EM/radio waves.** <https://ardupilot.org/copter/docs/common-magnetic-interference.html#common-magnetic-interference>
 - Likewise with the Pixhawk FCU, dampening might be required
 
 **Time-To-First-Fix**
@@ -543,7 +566,7 @@ On PX4 this is information is vital as the errors are not very clear or displaye
 - Solid red with SOS tone sequence: SD card missing or SD card bad format
 - No light when power on: No firmware，firmware lost，SD card missing or bad format（ac3.4 or higher version）
 
-https://docs.cubepilot.org/user-guides/here+/here+v2-user-manual
+<https://docs.cubepilot.org/user-guides/here+/here+v2-user-manual>
 
 #### LED Status
 
@@ -559,23 +582,25 @@ https://docs.cubepilot.org/user-guides/here+/here+v2-user-manual
 
 
 #### Status LED (on FC)
+
 | Color | Label | Bootloader usage | APP usage |
 | ----- | ----- | ---------------- | --------- |
 |Blue	|ACT (Activity)	|Flutters when the bootloader is receiving data	|Indication of ARM state|
 |Red/Amber	|B/E (In Bootloader / Error)	|Flutters when in the bootloader	|Indication of an ERROR|
 |Green	|PWR (Power)	|Not used by bootloader	|Indication of ARM state|
 
-https://docs.px4.io/v1.9.0/en/getting_started/led_meanings.html
+<https://docs.px4.io/v1.9.0/en/getting_started/led_meanings.html>
+
 #### Other Params
  UAVCAN_ENABLE - For GPS via CAN (PX4)
 
-# Misc Tips
+## Misc Tips
 
 In PX4 v1.8.2, calibrating esc does not always change the motor pwm_min or set one that is low enough. Do change it manually if the drone still spins too fast when arming.
 
 In particular, ESCs like the ones on the DJI Snail seems to have issues calibrating with ardupilot and px4. If the other methods in the snail manual do not work, try calibrating each esc manually with a PWM/Servo tester
 
-For reference, at min pwm, motors should not stop spinning when drone is tilted by 60 deg to each side. https://docs.px4.io/v1.9.0/en/config_mc/pid_tuning_guide_multicopter.html
+For reference, at min pwm, motors should not stop spinning when drone is tilted by 60 deg to each side. <https://docs.px4.io/v1.9.0/en/config_mc/pid_tuning_guide_multicopter.html>
 
 On px4 reflashing to different software versions does not necessarily reset all parameters, ensure reset to factory default is also used
 
