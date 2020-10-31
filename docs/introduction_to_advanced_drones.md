@@ -66,7 +66,6 @@ Dont take this as META, if you are reading this you probably are just starting o
 - Check clear of people and nearby hazards
 
 ## Recommended Roles
-
 Pilot - flies drone/ operates RC transmitter
 Backup Pilot - might be required standing beside to the pilot for long range mission where the pilot flies FPV and the backup pilot can take over during LOS
 Ground Control - Observes and provides audio feedback to pilot regarding flight status, flight mode,  battery, error states, etc
@@ -74,7 +73,6 @@ Spotter - ensures safety of other people and the surrounding, eg weather conditi
 FPV - for spotting objects/mannequin during mission
 
 # Mission Planner vs QGC
-
 There are differences between PX4 and Ardupilot and their target platforms which can be found online. To simplify things for now all you need to know is that Ardupilot is a flight control software in which Mission Planner is the program you download to configure it while PX4 is yet another flight control software in which QGroundControl(QGC) is the program used to configure it. Hardware wise usually the same flight controllers are compatible with both of them but Ardupilot seems to support newer sensors faster.
 
 In AAVC 2020, we used Ardupilot for two main reasons
@@ -89,12 +87,12 @@ In AAVC 2020, we used Ardupilot for two main reasons
    The full range of Auxiliary Functions can be found [here](https://ardupilot.org/copter/docs/common-auxiliary-functions.html).
 
 *Other Advantages*
-Ardupilot tends to be less anal about GPS errors compared to PX4 and Mission Planner also displays the errors too unlike QGC.
-Increased number of survey patterns and waypoint options. Spline waypoints provide a smooth path but are not required in missions.
-The amount of auxiliary functions(RCx_OPTION) that can be bound in Ardupilot without much additional effort.
-Out of the box support for obstacle avoidance with multiple sensors
-Support for less sensors. Atm it seems like ardupilot is being updated to support newer sensors more frequently than px4.
-More mission types in Ardupilot as compared to QGC
++ Ardupilot tends to be less anal about GPS errors compared to PX4 and Mission Planner also displays the errors too unlike QGC.
++ Increased number of survey patterns and waypoint options. Spline waypoints provide a smooth path but are not required in missions.
++ The amount of auxiliary functions(RCx_OPTION) that can be bound in Ardupilot without much additional effort.
++ Out of the box support for obstacle avoidance with multiple sensors
++ Support for less sensors. Atm it seems like ardupilot is being updated to support newer sensors more frequently than px4.
++ More mission types in Ardupilot as compared to QGC
 
 # Mission Planner
 Heres a brief overview of mission planner which should aid in setting up basic missions for competitions.
@@ -135,16 +133,10 @@ VLC allows for a usb vtx or another video source to be overlaid.
 
 [This video provides some other useful tips of hidden Mission Planner Features.](https://www.youtube.com/watch?v=yUV8B-9c6d8)
 
-
-
-
 ## Misc Tips
 BRD_SAFETYENABLE needs to be set to 0 for ESC calibration(else a safety switch needs to be connected),CBRK_IO on newer firmware
 
-
-
 # Setting up Autonomous Flight Modes
-
 Below are the required calibrations for autonomous flight. Importantly, tuning the parameters should not be done solely visually, but with the help of the live graphs and the logs. It is important for the flight controller to be able to respond correctly to reach its target setpoint. When flying manually it might not be as apparent that params are incorrect as we have to benefit of correcting visually.
 
 QGC Logs location            |  Mission Planner Logs Location
@@ -153,15 +145,29 @@ QGC Logs location            |  Mission Planner Logs Location
 
 Ardupilot logs can be reviewed on the app but for PX4 has this nice website [to review logs](https://logs.px4.io/).
 
-## Mavlink
+## MAVLink
+MAVLink is the underlying protocol used for communication with the drone as well as within the drone. This is the de facto industry standard used by many components and the software which run on them. As such, do note that alot of the common errors can be diagnosed via MAVLink messages and more advanced functionality such as high level autonomy are built upon it. With MAVLink, sensors and components can speak to each other through this messaging protocol, making integration of components on a drone much easier. Notably, this standard protocol also allows for packages such as Mavros to interface ROS with flight controllers to allow for autonomous flight related features.
 
-**fact checking needed** Mavlink is the underlying protocol for communication with the drone. As such, do note that alot of the common errors can be diagnosed via mavlink messages and more advanced functionality such as automation are built upon it. PX4 and Ardupilot both utilise it. With mavlink, sensors can speak to each other and broadcast messages, etc ??? This standard protocol also allows for packages such as Mavros to interface ROS with flight controllers with allow for autonomy related features.
+A short list of notable hardware and software which support MAVLink
++ Any flight controller running
+  + Ardupilot
+  + PX4
++ Any computer running
+  + QGroundControl
+  + MissionPlanner
+  + MAVROS
+  + Program written with MAVSDK
++ Various Camera Gimbal/Gimbal Controllers supporting MAVLink
++ Arduino   
 
 https://mavlink.io/en/about/implementations.html
 
-[Heres a list of mavlink commands](https://dev.px4.io/v1.9.0/en/middleware/modules_command.html) to help with debugging in QGC with PX4(Ardupilot seems to have discontinued it). The listener <device> command is pretty useful to check if a sensor is publishing data(eg listener optical_flow, listener uavcan). Sensors can be manually started and stopped(eg tfmini start, tfmini status, tfmini stop).
+### Degbugging PX4 using MAVLink Shell
+The MAVLink Shell is the Nutt Shell (running on NuttX RTOS that PX4 is built upon) accessed through MAVLink.
 
-## Mavlink Inspector
+[Heres a list of mavlink commands](https://dev.px4.io/v1.9.0/en/middleware/modules_command.html) to help with debugging PX4 with QGC (Ardupilot seems to have discontinued it). The listener <device> command is pretty useful to check if a sensor is publishing data(eg listener optical_flow, listener uavcan). Sensors can be manually started and stopped(eg tfmini start, tfmini status, tfmini stop).
+
+### Mavlink Inspector
 An important diagnostic tool easily overlooked is the mavlink inspector. This can be used to observe various mavlink values in real-times which is useful for tuning stuff like altitude hold/setpoint. Both GCS have the ability to graph multiple values live which are helpful to validate the changing values.
 
 The full descriptions of [mavlink messages](https://mavlink.io/en/messages/common.html#MAV_CMD) can be found here. Understanding it is essential for autonomous flight modes with ROS or dronekit. Mavlink messages can be sent too in both [Mission Planner](https://ardupilot.org/dev/docs/commonmission-planner-command-line-interface-cli.html) and [QGC](https://docs.qgroundcontrol.com/en/analyze_view/mavlink_console.html) which can carry out any task such as arming or enabling range sensor drivers.
@@ -177,17 +183,15 @@ The Mavlink port can be broadcasted over a local network which allows you to con
 ## PID TUNING
 Ensure that the PID tuning is stable by checking the response curves for the pitch and roll graphs before attempting to fly in mission/auto flight modes. Overshooting the setpoints will result in oscillations and crashes. It takes time and experience to get the tune right. However, many other factors such as lack of dampening can cause excessive vibrations too, do take note about this before attempting to get a perfect tune.
 
-https://docs.px4.io/v1.9.0/en/config_mc/pid_tuning_guide_multicopter.html
+[PX4 PID Tuning Guide for Multicopters](https://docs.px4.io/v1.9.0/en/config_mc/pid_tuning_guide_multicopter.html)
 There are 3 sections, go read through the first 2 unless a crash is desired.
-https://oscarliang.com/quadcopter-pid-explained-tuning/
+[PID Tuning Explained by Oscarliang](https://oscarliang.com/quadcopter-pid-explained-tuning/)
 [Sample AAVC Test Flight with bad tuning and many oscillations](https://review.px4.io/plot_app?log=b51cbfc0-fb20-46d7-8d30-5252743e3eb2)
 
 ### The Ardupilot PID Autotune Shortcut
 Ardupilot has this rather convenient feature that allows it to autotune the PID in an open area. Ensure that altitude mode works first before binding the autotune function to a switch. The drone will use step inputs to determine the ideal rates for a sharp response. The AUTOTUNE_AXES param can be changed if your drone does not have enough battery life to tune all axis at once. It is highly recommended to use a GPS as this will allow the drone to maintain position despite windy conditions when autotune is activated from position hold.
 
 PID tuning only starts when both sticks are centered so the throttle will be at 50%, so ensure that altitude hold and hover throttle is tuned properly, more information below.
-
-
 
 Here are some very brief notes regarding PID tuning, much more indepth information is available online.
 
@@ -267,8 +271,6 @@ However, if the drone is required to fly in tunnels or buildings where GPS canno
 The Ardupilot wiki page you mainly mentions optical or beacon based tracking solutions with the exception being cartographer with lidar(at time of writing)
 
 Further details on optical flow configuration are given in the respective Ardupilot and PX4 sections.
-
-
 
 ## Altitude Hold
 An important prerequisite to position hold is the altitude hold. Do note that (IIRC) both Ardupilot and PX4 do not have a param to change the radio controller throttle % at which it occurs and it always occurs when your radio controller is physically at 50% throttle. The settings altered simply changes the value of the throttle pwm value in which the flightstack tries to hover around. Hence, at 50% (+- whatever threshold is set) should allow it to hover and below 50% should activate a velocity based descent depending on how much the sticks are pushed down and above 50% should ascent the drone.
