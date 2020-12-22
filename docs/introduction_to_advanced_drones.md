@@ -1,108 +1,12 @@
 # Introduction to ADVANCED Dronery
 
+By this point, you would have built your workshop drone, flashed it with betaflight, and proceeded to maiden flight with it. However, to achieve autonomous or semi-autonomous functionality, a more powerful flight controller with a compatible firmware and more sensors are required to allow the drone to detect changes in its surroundings. This document will primarily focus on some of the required steps for autonomous flight and the interfacing of sensors with the two main autonomous flightstacks(Ardupilot and PX4).
+
 **Disclaimer from the authors**  
-This is a collection of notes taken down by past and present MRS members. Some of the information might be relevant to regular drone competitions that MRS participates in, namely SAFMC and AAVC. This is by no means extensive of what is needed to be known for those competitions nor is it fully fact checked.
-
-## Checklists
-
-Drone flying is an activity that has its fair share of troubleshooting required as well as hazards. The following checklists are practises that MRS Members have gained through experience to reduce the amount of troubleshooting required as well as to prevent accidents from happening
-
-### Assembly Checks
-- Visual Inspection
-- Check Motors and ESC, number/pin and direction; Calibration
-- Calibrate all sensors(accelerometer, level, magnetometer/compass)
-
-### Preflight Checks(**Do in reverse after Landing**)
-- Visual Inspection for missing or cracked/broken parts
-- Mechanical parts secured, arms not wobbling
-- Check that motor screws are of correct length and not overtightened, can cause scraping feeling if screws are too long and scrapes the motor housing
-- Check FPV Camera housing taken out
-- Check Mode Switch
-- Check Payload Switch
-- Mount propellers and bushing(if applicable)
-- Check for any errors in Mission Control/QGC
-- Check FPV Camera Feed
-- Check clear of people and nearby hazards
-
-## Recommended Roles within Teams
-Pilot - flies drone/ operates RC transmitter
-Backup Pilot - might be required standing beside to the pilot for long range mission where the pilot flies FPV and the backup pilot can take over during LOS
-Ground Control - Observes and provides audio feedback to pilot regarding flight status, flight mode,  battery, error states, etc
-Spotter - ensures safety of other people and the surrounding, eg weather condition, birds, other drones, intervenes only if there is threat to mission or nearby people
-FPV - for spotting objects/mannequin during mission
-
-## Mission Planner vs QGC
-There are differences between PX4 and Ardupilot and their target platforms which can be found online. To simplify things for now all you need to know is that Ardupilot is a flight control software in which Mission Planner is the program you download to configure it while PX4 is yet another flight control software in which QGroundControl(QGC) is the program used to configure it. Hardware wise usually the same flight controllers are compatible with both of them but Ardupilot seems to support newer sensors faster.
-
-In AAVC 2020, we used Ardupilot for two main reasons
-
-1. Auto PID Tuning on Ardupilot  
-Ardupilot allows for automatic PID Tuning which can be bound to a switch under the config/tuning-> extended tuning page. Param AUTOTUNE_AXES can be set to individually tune one axis at a time so that the battery does not run flat. The drone has to be landed while in PID Mode for the PID to be saved.[Link](https://ardupilot.org/copter/docs/autotune.html)
-This saves alot of time normally spent tuning(especially as beginners) as it is hard to tune large drones in SUTD
-
-2. Servo Release without Mixing  
-Ardupilot has many presets for mixing the main and auxiliary outputs as unlike PX4 which required mixing for actuation of a servo. By making use of the camera shutter functionality, the payload can be triggered via DIGICAM_CONTROL during missions or bound to a switch. On the pixhawk cube (2), RC8 is Main 8 and RC9 is Aux 1, RC10 is Aux 2, etc... [Link](https://ardupilot.org/copter/docs/common-servo.html). Importantly, the RC ports on the pixhawk can all be set as either input or output. The RCx params control the input behaviour, but when RCx_OPTION is set to 0, the port is set as an an output with the output behaviours being controlled by [the servo params](https://ardupilot.org/copter/docs/common-rcoutput-mapping.html). This includes the 4 motor pins which are automatically mixed from the 4 RC Inputs(throttle,yaw,pitch,roll) into the individual servo1,servo2,servo3,servo4 outputs.
-
-The full range of Auxiliary Functions can be found [here](https://ardupilot.org/copter/docs/common-auxiliary-functions.html).
-
-**Other Advantages**
-
-+ Ardupilot tends to be less anal about GPS errors compared to PX4 and Mission Planner also displays the errors too unlike QGC.
-
-+ Increased number of survey patterns and waypoint options. Spline waypoints provide a smooth path but are not required in missions.
-
-+ The amount of auxiliary functions(RCx_OPTION) that can be bound in Ardupilot without much additional effort.
-
-+ Out of the box support for obstacle avoidance with multiple sensors
-
-+ Support for less sensors. Atm it seems like ardupilot is being updated to support newer sensors more frequently than px4.
-
-+ More mission types in Ardupilot as compared to QGC
-
-## Mission Planner
-Heres a brief overview of mission planner which should aid in setting up basic missions for competitions.
-
-### User Interface and Mission Setup
-![logo](https://i.imgur.com/NdZn8ve.png)
-Near the left side of mission planner, there is a list of readings that can be changed by double clicking on it. Under Actions tab there are buttons for Takeoff, RTL, shutter, etc
-
-Near the top side middle there is a cockpit. It will display this green blue background by default but can be changed to accept fpv feed from an av to usb receiver or any video source. Any GPS or arming errors will pop up here too.
-
-On the top are the tabs, flight plan is used for planning flight paths and the main configuration is done through initial setup and config and tuning. Simulation is useful for error checking your flight plan to prevent any unforeseen errors or flyaway. **Use it to verify your gps missions before competitions**
-
-![logo](https://imgur.com/u3jqf31.png)
-
-The Flight plan tab has changed through the many revisions, tutorials on youtube use different versions of mission planner but the main differences are the shifting of the polygon tool(to draw search and geofence areas) to the top left and the moving of geofencing to a separate display tab. Geofencing does not seem to work with mission mode but more testing is required to determine this.
-
-The commands will be executed sequentially according to the order given below. The commands are pretty self explanatory and can be searched up easily.
-
-A few notes, DO_DIGICAM_CONTROL activates shutter and DO_CHANGE_SPEED only requires the second term to be filled in to change ground speed.
-
-Always save at least 2 copies of the mission with the buttons on the right to make sure it is not accidentally overwritten and use the load WP and save WP buttons to save a temporary mission that is cleared on reboot.
-
-![logo](https://imgur.com/lsKwuxW.png)
-
-Right clicking on the maps gives you a bunch of options, prefetch can be used to download the map for offline areas.
-
-![logo](https://i.imgur.com/KiN1qAI.png)
-
-Creating multiple waypoints for a survey can be done through the autowp option.
-
-[The full documentation is on the website](https://ardupilot.org/planner/docs/common-planning-a-mission-with-waypoints-and-events.html) but this should provide a basic understanding of what needs to be done for a mission. 
-
-Hitting CTRL-F brings up the temp menu which hides a disgusting amount of buttons with useful features.
-![logo](https://i.imgur.com/uAron16.png)
-Some of the helpful options for general use are highlighted here.
-Mavlink can be used to mirror the stream over a local network, which is useful for opening up another instance of GCS on another computer to observe other parameters.
-VLC allows for a usb vtx or another video source to be overlaid.
-
-[This video provides some other useful tips of hidden Mission Planner Features.](https://www.youtube.com/watch?v=yUV8B-9c6d8)
-
-### Misc Tips
-BRD_SAFETYENABLE needs to be set to 0 for ESC calibration(else a safety switch needs to be connected),CBRK_IO on newer firmware
+This is a collection of notes taken down by past and present MRS members. This is by no means extensive of what is needed to be known for those competitions nor is it fully fact checked.
 
 ## Setting up Autonomous Flight Modes
-Below are the required calibrations for autonomous flight. Importantly, tuning the parameters should not be done solely visually, but with the help of the live graphs and the logs. It is important for the flight controller to be able to respond correctly to reach its target setpoint. When flying manually it might not be as apparent that params are incorrect as we have to benefit of correcting visually.
+Below are the required calibrations for autonomous flight. Importantly, tuning the parameters should not be done solely visually, but with the help of the live graphs and the logs. It is important for the flight controller to be able to respond correctly to reach its target setpoint. When flying manually it might not be as apparent that parameters are incorrect as we have to benefit of correcting visually. Reading logs takes experience so do not be afraid to ask around for advice about issues.
 
 QGC Logs location            |  Mission Planner Logs Location
 :-------------------------:|:-------------------------:
@@ -112,6 +16,8 @@ Ardupilot logs can be reviewed on the app but for PX4 has this nice website [to 
 
 ## MAVLink
 MAVLink is the underlying protocol used for communication with the drone as well as within the drone. This is the de facto industry standard used by many components and the software which run on them. As such, do note that alot of the common errors can be diagnosed via MAVLink messages and more advanced functionality such as high level autonomy are built upon it. With MAVLink, sensors and components can speak to each other through this messaging protocol, making integration of components on a drone much easier. Notably, this standard protocol also allows for packages such as Mavros to interface ROS with flight controllers to allow for autonomous flight related features.
+
+*For missions accomplished within QGC(eg SAFMC D1 or purely GPS controlled missions in AAVC), knowledge in MAVlink is not really necessary. Nonetheless, having this knowledge will benefit your understanding and could help you leverage some of its useful features.*
 
 A short list of notable hardware and software which support MAVLink
 + Any flight controller running
@@ -266,10 +172,15 @@ On the topic of sensors and compasses, remember that you can change the orientat
 (Unrelated) You can define which CAN Driver to use under a CAN port, [CAN_P1_DRIVER can be used on either physical port](https://ardupilot.org/copter/docs/parameters.html#can-p1-driver)
 
 ## Misc sensor reference for Ardupilot
-### ProfiCNC mini carrier board pinout
+
+### Misc reference for Ardupilot
+#### ProfiCNC mini carrier board pinout
 [Mini carrier board pinout](https://discuss.ardupilot.org/t/pixhawk-2-1-cube-mini-carrier-board-questions/33529/23)
 [Alternate link](https://docs.cubepilot.org/user-guides/carrier-boards/mini-carrier-board)
+*Do take note that the lack of certain ports on this board might result in incomptiablity of some sensors*
 
+#### Misc Tips
+BRD_SAFETYENABLE needs to be set to 0 for ESC calibration(else a safety switch needs to be connected),CBRK_IO on newer firmware
 
 ### Obstacle Avoidance Sensors
 Most ultrasonic obstacle avoidance sensors comes with an analog value which is scaled based on distance and either a serial or I2C port depending on the version. I2C allows for multiple sensors to be chained together.
