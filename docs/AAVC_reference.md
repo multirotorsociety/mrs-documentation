@@ -103,6 +103,7 @@ The full range of Auxiliary Functions can be found [here](https://ardupilot.org/
 
 ## Mission Planner
 Heres a brief overview of mission planner which should aid in setting up basic missions for competitions.
+Do note that mission based GPS payload drop might not necessarily yield more points than a manual drop(depending on scoring).
 
 ### User Interface and Mission Setup
 ![logo](https://i.imgur.com/NdZn8ve.png)
