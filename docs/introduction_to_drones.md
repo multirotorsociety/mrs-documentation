@@ -74,7 +74,7 @@ Radio controllers can have a module bay to add different transmitter modules.
 
 ![logo](https://marketchangers.files.wordpress.com/2017/05/dsc7040.jpg?w=930)
 
-Most radio controllers can transmit around 6-12 channels with higher end controllers having up to 18 or more channels. Each channel has an analog value and corresponds to one control such as pitch, yaw or something else. To reduce the need of having one signal and ground wire for each individual channel, protocols are used to transmit multiple channels on a single pin/wire (with 1 ground) such as sbus, ppm, cppm, etc. Documentation on the configuration required can be found by searching individual recievers and radio controllers.
+Most radio controllers can transmit around 6-12 channels with higher end controllers having up to 18 or more channels. Each channel has an analog value and corresponds to one control such as pitch, yaw or something else. To reduce the need of having one signal and ground wire for each individual channel, protocols are used to transmit multiple channels on a single pin/wire (with 1 ground) such as sbus, ppm, cppm, etc. Do note that the different protocol eg ppm,sbus might need to be defined in both the flight controller software and on the controller itself. Documentation on the configuration required can be found by searching individual recievers and radio controllers.
 
 ## Receivers
 Receivers receive the radio input transmitted by the radio controller.
