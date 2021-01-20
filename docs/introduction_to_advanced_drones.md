@@ -1,18 +1,20 @@
 # Introduction to ADVANCED Dronery
 
-By this point, you would have built your workshop drone, flashed it with betaflight, and proceeded to maiden flight with it. However, to achieve autonomous or semi-autonomous functionality, a more powerful flight controller with a compatible firmware and more sensors are required to allow the drone to detect changes in its surroundings. This document will primarily focus on some of the required steps for autonomous flight and the interfacing of sensors with the two main autonomous flightstacks(Ardupilot and PX4).
+By this point, you should have built your workshop drone, flashed it with betaflight, and proceeded to maiden flight with it. However, to achieve autonomous or semi-autonomous functionality, a more powerful flight controller with a compatible firmware and more sensors are required for the drone to detect changes in its surroundings. This document will primarily focus on some of the required steps for autonomous flight and the interfacing of sensors with the two main autonomous flightstacks(Ardupilot and PX4).
 
 **Disclaimer from the authors**  
 This is a collection of notes taken down by past and present MRS members. This is by no means extensive of what is needed to be known for those competitions nor is it fully fact checked.
 
 ## Setting up Autonomous Flight Modes
-Below are the required calibrations for autonomous flight. Importantly, tuning the parameters should not be done solely visually, but with the help of the live graphs and the logs. It is important for the flight controller to be able to respond correctly to reach its target setpoint. When flying manually it might not be as apparent that parameters are incorrect as we have to benefit of correcting visually. Reading logs takes experience so do not be afraid to ask around for advice about issues.
+Below are the required calibrations for autonomous flight. Importantly, tuning the parameters should not be done solely visually, but with the help of the live graphs and the logs. It is important for the flight controller to be able to respond correctly to reach its target/setpoint. When flying manually it might not be as apparent that parameters are incorrect as we have to benefit of correcting visually. Reading logs takes experience so do not be afraid to ask around for advice.
 
 QGC Logs location            |  Mission Planner Logs Location
 :-------------------------:|:-------------------------:
 ![logo](https://i.imgur.com/D4BYmMd.png) |![logo](https://i.imgur.com/xwjKWKZ.png)
 
 Ardupilot logs can be reviewed on the app but for PX4 has this nice website [to review logs](https://logs.px4.io/).
+
+Do note that in the case of the sudden power loss to the FCU, the logs will cutoff right after that point.
 
 ## MAVLink
 MAVLink is the underlying protocol used for communication with the drone as well as within the drone. This is the de facto industry standard used by many components and the software which run on them. As such, do note that alot of the common errors can be diagnosed via MAVLink messages and more advanced functionality such as high level autonomy are built upon it. With MAVLink, sensors and components can speak to each other through this messaging protocol, making integration of components on a drone much easier. Notably, this standard protocol also allows for packages such as Mavros to interface ROS with flight controllers to allow for autonomous flight related features.
@@ -52,24 +54,29 @@ In PX4, the mavlink inspector is found under the Logs Tab.
 The Mavlink port can be broadcasted over a local network which allows you to connect remotely via another computer which is useful for debugging while viewing other sources. Ardupilot has this function built in via the mavlink option on the temp page but this can be carried out on px4 too.
 
 ## PID TUNING
-Ensure that the PID tuning is stable by checking the response curves for the pitch and roll graphs before attempting to fly in mission/auto flight modes. Overshooting the setpoints will result in oscillations and crashes. It takes time and experience to get the tune right. However, many other factors such as lack of dampening can cause excessive vibrations too, do take note about this before attempting to get a perfect tune.
+Ensure that the PID tuning is stable by checking the response curves for the pitch and roll graphs before attempting to fly in mission/auto flight modes. Overshooting the setpoints will result in oscillations and crashes. It takes time and experience to get the tune right.
+**However**, many other factors such as lack of dampening can cause excessive vibrations too, similarly loose screws or components that are not fastened down might generate issues. Visually inspect your drone and check for possible issues that might cause instability before attempting to get a perfect tune.
 
 [PX4 PID Tuning Guide for Multicopters](https://docs.px4.io/v1.9.0/en/config_mc/pid_tuning_guide_multicopter.html)
-There are 3 sections, go read through the first 2 unless a crash is desired.
+There are 3 sections, do read through the first 2(even briefly) unless a crash is desired.
 [PID Tuning Explained by Oscarliang](https://oscarliang.com/quadcopter-pid-explained-tuning/)
 [Sample AAVC Test Flight with bad tuning and many oscillations](https://review.px4.io/plot_app?log=b51cbfc0-fb20-46d7-8d30-5252743e3eb2)
 
 ### The Ardupilot PID Autotune Shortcut
-Ardupilot has this rather convenient feature that allows it to autotune the PID in an open area. Ensure that altitude mode works first before binding the autotune function to a switch. The drone will use step inputs to determine the ideal rates for a sharp response. The AUTOTUNE_AXES param can be changed if your drone does not have enough battery life to tune all axis at once. It is highly recommended to use a GPS as this will allow the drone to maintain position despite windy conditions when autotune is activated from position hold.
+Ardupilot has this rather convenient feature that allows it to autotune the PID in an open area. Ensure that altitude mode works first before binding the autotune function to a switch. The drone will use step inputs to determine the ideal rates for a sharp response. The AUTOTUNE_AXES param can be changed if your drone does not have enough battery life to tune all axis at once. It is **highly recommended to use a GPS** as this will allow the drone to maintain position despite windy conditions when autotune is activated from position hold.
 
-PID tuning only starts when both sticks are centered so the throttle will be at 50%, so ensure that altitude hold and hover throttle is tuned properly, more information below.
+PID tuning only starts when both sticks are centered (ie the throttle will be at 50%), so ensure that altitude hold is tuned properly, more information below.
 
 Here are some very brief notes regarding PID tuning, much more indepth information is available online.
 
 ### PID calibration procedure
 Unlike racing drones it is impractical for larger, specialized drones to be tuned while flying FPV in acro so a method demanding less of the pilot will be briefly covered below. This process will be easier with one person flying and having a physical feel for how the drone response while the other reads the graphs and changes the params to suit the ideal response and pilots preference.
 
-Firstly, use quick impulse inputs and tune for roll->pitch->yaw one axis at a time. These rapid inputs should only occur for less than a split second as we only want to see how fast it responds to the current input. Repeat the impulse inputs a few times and observe the immediate response to the step input while discarding any external interferences(such as wind or lose parts causing movements). Tuning outdoors is unadvisable(aside from autotune) because of this. Do note that if tuning is conducted midair, always use the 5% increment button to avoid causing big changes in control to the drone and crashing.
+Firstly, use quick impulse inputs and tune for roll->pitch->yaw one axis at a time. These rapid inputs should only occur for less than a split second as we only want to see how fast it responds to the current input(ie inputting a impulse roll right input should cause the drone to momentarily tilt right. If it does not respond, the p is too low. If it starts to move right, then the roll input is too long and needs to be shorter.).
+
+Repeat the impulse inputs a few times and observe the immediate response to the step input while discarding any external interferences(such as wind or lose parts causing movements). Tuning outdoors is unadvisable(aside from autotune) because of this. Do note that if tuning is conducted midair, always use the 5% increment button to avoid causing big changes in control to the drone and crashing.
+
+For a balanced x-frame, you can expect the roll and pitch pids to be roughly the same, which speeds up tuning. For a H frame with the weight distributed along the y axis of the craft, the roll p-pid should be lower than the pitch p-pid as it is easier to roll. 
 
 The pid graph in PX4 is under Tuning-> Advanced Perimeters. The estimated(Red) is the actual position of the craft while the setpoint(green) is what is desired, therefore the setpoint should hug the estimated as close as possible.
 
@@ -95,13 +102,15 @@ Too low - drift, HIGH FREQUENCY OSCILLATION AFTER STEP INPUT
 *Increase if drifts in wind/external conditions, decrease if it corrects too slowly/little*
 *Recommended values are 0.3-0.5 on PX4 wiki*
 
+
+
 Arguably, this is one of the hardest parts of setting up a drone as it requires experience to isolate and identify the actual response.
 
 Isolate - ideally speaking, tuning should be done in an indoor environment without wind but since that is not always possible with bigger drones and lack of space, just be aware that external factors such as wind can cause the response to move on its own. Do not overcompensate for it.
 
 Identify - One common issue is identifying high frequency oscillations from low frequency oscillations when first starting out. The default PIDs from PX4 are deliberately set low for safety but it can be more than doubled on some drones. The biggest tell of high frequency oscillations is that it should be very hard to even take off(unlike low frequency which is still often possible). The drone should both visibly and audibly be constantly vibrating and trying to correct, with little or not control as a result. 
 
-As one might be unable to differentiate high from low frequency oscillations when tuning for the first time, the P tuning might be stopped at a much lower value than what the craft is actually capable of. Considering the size and price of the platform, it is understandable why this is more of an issue as compared to tuning an acro quad. Hence, it maybe useful to do a preliminary tuning of P,D,I and after it is sufficiently stable continue trying to increase P until it is uncontrollable.
+As one might be unable to differentiate high from low frequency oscillations when tuning for the first time, the P tuning might be stopped at a much lower value than what the craft is actually capable of. Considering the size and price of the platform, it is understandable why this is more of an issue as compared to tuning an acro quad. Hence, it maybe useful to do a preliminary tuning of P,D,I and after it is sufficiently stable **continue trying to increase P** until it is uncontrollable.
 
 The live graphs for PID tuning can be found from the advanced option under the tuning tab.
 ![logo](https://i.imgur.com/Vz8bNGC.png)
@@ -113,7 +122,7 @@ The parameters can be tuned on the fly incrementally.
 Here are some images of a tuning process that will perhaps help to judge the feedback of your drone. It is by no means ideal but should aid in helping you to read the graph if you are struggling with identifying what is going on. Do not be overly reliant on the graphs, visual identification and the pilot feedback are as important when tuning.
 
 ![logo](https://imgur.com/1Gx4XdM.png)
-As previously mentioned, try inputting impulse commands with P and no I or D. In this picture, the response is smaller than the command. Hence, the P has to be increased for increased responsiveness of the drone and to ensure that the graphs are closer to one another. When the drone starts exhibitying high frequency oscillations, either reduce the P **or** start adding in D together with P if more responsiveness is still desired.
+As previously mentioned, try inputting impulse commands with P and no I or D. In this picture, the response is smaller than the command. Hence, the P has to be increased for increased responsiveness of the drone and to ensure that the graphs are closer to one another. When the drone starts exhibiting high frequency oscillations, either reduce the P **or** start adding in D together with P if more responsiveness is still desired.
 
 ![logo](https://imgur.com/GkSbp29.png)
 In this graph, the drone oscillates after an impulse input. More D is required to dampen the response quicker.
@@ -134,18 +143,22 @@ As compared to indoor navigation, autonomous outdoor navigation is relatively tr
 ### Indoor
 However, if the drone is required to fly in tunnels or buildings where GPS cannot attain lock, other methods to position and localize the drone are needed.
 
-[This is a super handy link in ardupilot wiki](https://ardupilot.org/copter/docs/common-non-gps-navigation-landing-page.html) regarding commonly used sensors for indoor navigation. Amongst those which are used before are the [Intel T265](https://ardupilot.org/copter/docs/common-vio-tracking-camera.html) (which has a in-depth walkthrough in the link) and the [Optical Flow sensors](https://ardupilot.org/copter/docs/common-optical-flow-sensors-landingpage.html) (do ensure to check the optical flow setup link for the full instructions).
+[This is a super handy link in ardupilot wiki](https://ardupilot.org/copter/docs/common-non-gps-navigation-landing-page.html) regarding commonly used sensors for indoor navigation. Amongst those which are used before are the [Intel T265](https://ardupilot.org/copter/docs/common-vio-tracking-camera.html) (which has a in-depth walkthrough in the link) and the [Optical Flow sensors](https://ardupilot.org/copter/docs/common-optical-flow-sensors-landingpage.html) (do ensure to check the optical flow setup link for the full instructions). Optical flow is particularly popular, with drones such as DJI utilizing it. It is preferred as external setup of beacons are not needed. Do note that because of the transforms conducted on the image, it is both sensor and lens dependent, so do be aware of it when using open source projects.
 
 The Ardupilot wiki page mainly mentions optical or beacon based tracking solutions with the exception being cartographer with lidar(at time of writing)
 
-Further details on optical flow configuration are given in the respective Ardupilot and PX4 sections.
+Further details on specific optical flow configuration are given in the respective Ardupilot and PX4 sections.
 
 ## Altitude Hold
 An important prerequisite to position hold is the altitude hold. Do note that (IIRC) both Ardupilot and PX4 do not have a param to change the radio controller throttle % at which it occurs and it always occurs when your radio controller is physically at 50% throttle. The settings altered simply changes the value of the throttle pwm value in which the flightstack tries to hover around. Hence, at 50% (+- whatever threshold is set) should allow it to hover and below 50% should activate a velocity based descent depending on how much the sticks are pushed down and above 50% should ascent the drone.
 
 In Ardupilot, [Hover Throttle is automatically learnt](https://ardupilot.org/copter/docs/ac_throttlemid.html#ac-throttlemid) but can still be set manually if desired.
 
-Now that the desired performance is explained, tuning for this axis can occur.
+In PX4, always set your hover throttle **is not automatically learnt** so remember to lower than the actual thrust ratio to avoid banging the ceiling(especially if your craft is overpowered, ie less than 50% to hover).
+
+
+
+With the desired performance of altitude hold explained, tuning for the z axis in altitude/position mode can occur.
 First, attempt to hover the drone while observing the throttle value required in the Mavlink inspector. Set this value as the hover throttle value. (PX4: MPC_THR_HOVER). The params are found under MPC(multicopter position control) in PX4.
 
 In PX4, hover throttle can be changed with this slider. There is a param for this value but more testing is needed to determine if the param changes anything else.
@@ -366,8 +379,13 @@ tfmini start -d /dev/tty/S6
 tfmini status
 ```
 
-EKF2_HGT_Mode can be set to range sensor but be sure to test in a safe environment, it might be safer to use baro as the main height sensor.
-EKF2_RNG_AID can also be enabled to reduce the barometer inaccuracies caused by ground effect if the range sensor is not the primary sensor.
+Related params
+
+``` shell
+EKF2_HGT_MODE  - changes the primary height data source, still uses other for fusing
+EKF2_RNG_AID -can be enabled to reduce the barometer inaccuracies caused by ground effect if the range sensor is not the primary sensor.
+MPC_ALT_MODE - follow altitude or terrain
+```
 
 Use the listener distance_sensor command to test if it still works. A distance_sensor tab should pop up too.
 
@@ -378,7 +396,7 @@ Before attempting to implement optical flow for the first time, read through [th
 
 **If connected to PX4 via (USB) MAVLink the Optical Flow device must publish to the OPTICAL_FLOW_RAD topic, and the distance sensor must publish to the DISANCE_SENSOR topic.** Only then can fusing occur. To view this topic over telem, the param MAV_1_MODE can be changed from normal to onboard to force all the messages to be sent. This can be checked with the command *mavlink status*. Do note that this causes other issues such as inability to pick up impulse inputs on the graph during PID Tuning, so any mavlink driver is set to this during tuning.
 
-Aside from that, diagnosing flow issues are abit harder due to the lack of feedback in PX4. Do check your 1)orientation 2)altitude(needs to be high enough) and 3)xy_vel pids. Even though it might seem like the drone is tracking all of this params could still be wrong. For starters, try reducing the xy_vel_p to 0.08.
+Aside from that, diagnosing flow issues are abit harder due to the lack of feedback in PX4. Do check your 1)orientation 2)altitude(needs to be high enough) and 3)mpc_xy_vel pids 4) flow sensor offset with [EKF2_OF_POS](https://docs.px4.io/master/en/advanced_config/parameter_reference.html#EKF2_OF_POS_X). If tuning is still required, try reducing the mpc_xy_vel_p to 0.08. If that does not help, try changing mpc_xy_vel_d before touching the other mpc params but do note that it should not need to be changed much as the defaults should work okay with the .
 
 #### Hereflow
 Take note that on pre 2019 pixhawk 2.1 boards the can 1 and can 2 boards are swapped. The hereflow should be plugged in on the can 1 port by default.
@@ -395,6 +413,8 @@ The status of the hereflow can be checked with the mavlink commands `UAVCAN stat
  [Do note that the x and y axis in the hereflow manual seems to be swapped in px4](https://discuss.cubepilot.org/t/hereflow-setup-instructions-alpha-batch/341) 
 
 Personally, I had issues getting the hereflow to work in the horizontal position so I placed it in the vertical position with the circle on the [pmw3901](https://docs.px4.io/master/en/sensor/pmw3901.html) facing the back.
+
+
 
 ### Here+/2 GPS
 **Considerations**
