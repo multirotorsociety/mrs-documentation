@@ -1,3 +1,8 @@
+---
+hide:
+  - navigation
+---
+
 # Introduction to Dronery
 
 This quick start guide should provide you with the basic knowledge needed to understand what is required to setup a basic drone. 
