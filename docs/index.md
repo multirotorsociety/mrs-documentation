@@ -1,3 +1,8 @@
+---
+hide:
+  - navigation
+  - toc
+---
 # MRS Knowledge Base
 
 This is where where we write documentation on various topics for future batches of club members as we work on projects

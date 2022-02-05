@@ -1,23 +1,31 @@
 # Introduction to Dronery
 
-This quick start guide should provide you with the basic knowledge needed to understand what is required to setup a basic drone. This **guide will not go into depth about all drone related topics but should provide a basis to allow you to understand how to read online documentation**. As the standards keep changing and manufacturers continue to release new products, **it is vital that you learn how to read online documentation and manuals**.
+This quick start guide should provide you with the basic knowledge needed to understand what is required to setup a basic drone. 
+!!! info "Note"
+
+    **This guide will not go into depth about all drone related topics but should provide a basis to allow you to understand how to read online documentation**. As the standards keep changing and manufacturers continue to release new products, **it is vital that you learn how to read online documentation and manuals**.
 
 ## Basic Components
 
 ![logo](https://imgur.com/AxbRCdi.png)
 
 ## Propellers (Props)
-Firstly, the things that create lift, the propellers.  
-**This should always be put on LAST only after all other checks have been performed. ALWAYS CHECK YOUR SURROUNDINGS AND ASK SOMEONE WITH EXPERIENCE TO CHECK BEFORE PUTTING ON PROPELLERS FOR MAIDEN FLIGHT. The propellers can gravely injure people.** 
+Firstly, the things that create lift, the propellers.
+
+!!! warning
+	While this is the first section, this should always be put on **LAST** only after all other checks have been performed. ALWAYS CHECK YOUR SURROUNDINGS AND ASK SOMEONE WITH EXPERIENCE TO CHECK BEFORE PUTTING ON PROPELLERS FOR MAIDEN FLIGHT. Propellers can gravely injure people.
 
 <p align="center">
   <img src=https://imgur.com/oabVHUj.png />
   Betaflight default X-frame quadcopter prop configuration
 </p>
 
-You would notice that the Motors marked 1 and 4 spin clockwise and the Motors marked 2 and 3 spin anticlockwise. Before placing the propellers, **ensure that the correct CW/CCW propellers are used for the correct motors**. If the motors spin clockwise, the nut should be tightened anticlockwise(and vice versa). This prevents the propellers from loosening during flight.
+You would notice that the Motors marked 1 and 4 spin clockwise and the Motors marked 2 and 3 spin anticlockwise. Before placing the propellers, **ensure that the correct CW/CCW propellers are used for the correct motors**. 
 
-Different frame configurations will have different motor directions. When in doubt, refer to the documentation on the flightstack(betaflight) itself.
+!!! tip
+	Some motors, typically older ones, come with self tightning nuts instead of locknuts. If the motors spin clockwise, the nut will be tightened anticlockwise(and vice versa). This prevents the propellers from loosening during flight.
+
+Different frame configurations will have different motor directions. When in doubt, refer to the documentation on the flightstack(betaflight/PX4/Ardupilot) itself.
 
 ## Power Distribution Board (PDB)
 Supplies power from the battery to the motors and converts the battery voltage to 5V for the flight controller, regulates power input to prevent the electronics onboard from damaging levels of power.
@@ -34,35 +42,48 @@ The Motors spin and generate thrust when used with the propellers. They have CW(
 
 ![logo](https://us-w1-img-listing.eccang.com/0/dnU2QUpieHE1d1NoMCtOek90MWFZUT09/201808/2767831UYdEoSm8.jpg) 
 
-These motors can spin in the wrong direction, to fix that, either reverse it in firmware (if the ESC supports it) or **swap any of the 2 motor wires**.
+!!! tip "If the motor spins in the wrong direction"
+	Swap any of the 2 motor wires
 
 ## Electronic Speed Controller (ESC)
-These circuits help to regulate the speed of the motors, they take a PWM signal from the flight controller and combine them with the high power from the PDB/Battery to allow for control of the motor.
+These circuits help to regulate the speed of the motors, they take a signal from the flight controller and draw power from the Battery to drive the motor.
 
-For smaller drones, you can find an esc all in one combined with a PDB or even built into the FC but larger drones require a standalone ESC for each motor due to the high power drawn.
+For smaller drones, you can find an esc all in one combined with a PDB or even built into the FC but larger drones usually have standalone ESCs for each motor due to the high power drawn.
 
-All in one ESC Board            |  Standalone ESC
-:-------------------------:|:-------------------------:
-![](https://cdn.getfpv.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/k/i/kiss-compactctrl-cc-all-in-one.jpg) |![](https://www.electricwingman.com/img/product/large/TMotorFlame60AESC4.jpg)
+4 in 1 ESC Board            |  Standalone ESC
+:--------------------------:|:-------------------------:
+![](http://www.holybro.com/wp-content/uploads/2021/10/31102-2-600x600.jpg) |![](http://www.holybro.com/wp-content/uploads/2021/12/31104-1-600x600.jpg)
 
-On Standalone ESCs, There will be 3 motor wires on one side of the board, and 4/5 wires on the other side of the board. On the other side with 4/5 wires, two of the wires are for battery voltage and battery ground and will be soldered to the PDB. These wires are thicker than the other wires to carry more current. The other 2/3 wires are for signal/ground or signal/power/ground(ignore power for now). The signal should be plugged into the S1/S2/S3/S4 ports respectively and the ground can be plugged into any ground port.
+On Standalone ESCs, There will be 3 motor wires on one side of the board, and 4 or 5 wires on the other side of the board. On the other side with 4 or 5 wires, two of the wires are for battery voltage and battery ground and will be soldered to the PDB. These wires are thicker than the other wires to carry more current. The other wires are for signal,ground and sometimes telemetry. The signal should be plugged into the S1/S2/S3/S4 ports respectively and the ground can be plugged into any ground port.
 
 ![logo](https://tocircuit.com/wp-content/uploads/2019/11/direct_bb-1024x346.png)
 
 ## Batteries (Lipo)
-The batteries come with many different chemistries but generally we use the term LiPos (short for Lithium Polymer). A single lipo cell can usually be used from 4.2 to 3.5V. Overdischarge or overcharge results in the battery spoiling. LiPos have a high rate of discharge given by the C rating on the battery which allows the motor to suck more current than regular batteries. 
-
-This is made possible by the low resistance which is essential for the application of drones due to the high current that is drawn by the motors. As a result, a single short across the positive and negative wires is enough to kill the battery and cause an electrical fire due to the low internal resistance unlike AA/AAA batteries. **Special precaution has to be taken when handling lipos** to prevent puncture of cells or overcharge/discharge. 
-
-In terms of charging, the safest way to charge lipos is by 1A per 1000mah(battery capacity). So a 500mah battery would charge at 0.5A. This rate is 1C, different manufacturers can specify different charge and discharge rates for the battery but to preserve battery health a charge rate of 1C is advised.
-
-Lipo chargers allow for charging to HV(4.35V instead of 4.2v) and some do not automatically set a safe current/voltage when charging so do be careful about that.
 
 <p align="center">
   <img src="https://cdn-global-hk.hobbyking.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/1/7/176399_9067000273-0.jpg" />
 </p>  
+The batteries come with many different chemistries but generally we use the term LiPos (short for Lithium Polymer). 
 
-For long term storage, lipos have to be discharged to its nominal voltage which is usually around 3.7V.  
+LiPos have a high rate of discharge which allows the motor to suck more current than regular batteries. This is made possible by the low resistance which is essential for the application of drones due to the high current that is drawn by the motors. As a result, a single short across the positive and negative wires is enough to kill the battery and cause an electrical fire due to the low internal resistance unlike AA/AAA batteries. **Special precaution has to be taken when handling lipos** to prevent puncture of cells or overcharge/discharge. 
+
+### Discharging
+
+A single lipo cell usually has a voltage of 4.2V when full and 3.3V when empty. Overdischarging or overcharging results in the battery spoiling. LiPos have a maximum discharge rate which can be calculated from the C rating on the battery using this equation:
+
+$$
+\frac{\text{Capcity in mAh}}{1000} \times \text{C rating} 
+$$
+
+### Charging
+
+In terms of charging, the safest rate to charge lipos is at 1C or 1A per 1000mah(battery capacity). So a 500mah battery would charge at 0.5A. Different manufacturers can specify different maximum charge and discharge rates for the battery but to preserve battery health a charge rate of 1C is advised.
+
+Lipo chargers allow for charging to HV(4.35V instead of 4.2v) and some do not automatically set a safe current/voltage when charging so do be careful about that.
+
+### Storage
+
+For long term storage, lipos have to be discharged or charged to 3.8V which is slightly above the nominal voltage of  3.7V.  
 This is known as **storage charging**.
 
 ## Radio Controllers/Transmitter
@@ -97,6 +118,8 @@ The Flight Controller is the brain/CPU of the drone, it controls the drone movem
 The first thing to notice is the arrow located on the board. **The tip of the arrow represents the front of the drone. The FC should be mounted in the correct orientation**. Conveniently, this board has the pins labelled, but normally this will be indicated in the online manual. The important ports will be explained in greater detail below. **Reading the manual of a FC is essential for understanding in all situations**.
 
 The S1,S2,S3,S4 pins indicate the respective ESC PWM cables that needs to be connected with respect to the pins in the betaflight/flightstack configuration. While depending on the receiver and configuration TX,RX,SBUS pins can be used. 
+
+Newer FCs may come in a set with a 4 in 1 ESC, both having matching connectors and cables to ease connection of the FC to ESC
 
 ## Flight Stack
 Also known as the Firmware, the Flight Stack is the software which runs on the Flight Controller

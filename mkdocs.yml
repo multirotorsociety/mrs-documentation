@@ -1,18 +1,19 @@
 site_name: MRS
-
-repo_url: https://github.com/multirotorsociety/mrs-documentation
-repo_name: mrs-documentation
-edit_uri: ''
+site_description: Multi Rotor SUTD Documentation
 
 theme:
     name: material
     palette: 
+        scheme: default
         primary: light blue
         accent: blue
     font:
         text: Noto Sans
     features:
         - navigation.tabs
+        - navigation.expand
+        - navigation.top
+        - navigation.track
     icon:
         logo: material/quadcopter
 
@@ -24,6 +25,34 @@ nav:
         - AAVC Reference: 'AAVC_reference.md'
 
 markdown_extensions:
-    - attr_list
-    - pymdownx.highlight
-    - pymdownx.superfences
+    - attr_list # https://squidfunk.github.io/mkdocs-material/reference/buttons/#attribute-list
+    - admonition # https://squidfunk.github.io/mkdocs-material/reference/admonitions/#admonition
+    - footnotes
+    - pymdownx.caret # handling sub- and superscripts
+    - pymdownx.mark # highlighting of text
+    - pymdownx.tilde # strikethrough of text
+    - pymdownx.keys # https://squidfunk.github.io/mkdocs-material/reference/code-blocks/#keys
+    - pymdownx.details # https://squidfunk.github.io/mkdocs-material/reference/admonitions/#details
+    - pymdownx.highlight # https://squidfunk.github.io/mkdocs-material/reference/code-blocks/#code-blocks
+    - pymdownx.smartsymbols # supporting special characters like copyright symbol (c)
+    - pymdownx.superfences # https://squidfunk.github.io/mkdocs-material/reference/code-blocks/#superfences
+    - pymdownx.tabbed: # https://squidfunk.github.io/mkdocs-material/reference/content-tabs/#tabbed
+        alternate_style: true 
+    - pymdownx.arithmatex: # https://squidfunk.github.io/mkdocs-material/reference/mathjax/#arithmatex
+        generic: true
+    - pymdownx.emoji: # https://squidfunk.github.io/mkdocs-material/reference/icons-emojis/#emoji
+        emoji_index: !!python/name:materialx.emoji.twemoji
+        emoji_generator: !!python/name:materialx.emoji.to_svg
+    - pymdownx.tasklist: # https://squidfunk.github.io/mkdocs-material/reference/lists/#tasklist
+        custom_checkbox: true
+        clickable_checkbox: true
+    - toc: # https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#table-of-contents
+        permalink: "#"
+    - meta
+    - abbr
+    - pymdownx.snippets
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
