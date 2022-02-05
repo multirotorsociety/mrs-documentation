@@ -1,3 +1,8 @@
+---
+hide:
+  - navigation
+---
+
 # AAVC (Autonomous Aerial Vehicle Competition) Reference  
 [Facebook for announcements](https://www.facebook.com/groups/1014035222041487/){: .md-button .md-button--primary }
 [Website for rules](https://iaai.asia/aavc_Rule.html){: .md-button .md-button--primary }
