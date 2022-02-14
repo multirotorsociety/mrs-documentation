@@ -11,17 +11,17 @@ This is where where we write documentation on various topics for future batches 
 
 An introductory guide to multi rotors for newcomers can be found here
 
-[Introduction to Drones](introduction_to_drones.md){: .md-button .md-button--primary}
+[Introduction to Drones](/basic/introduction_to_drones){: .md-button .md-button--primary}
 
 ## For more experienced members
 An guide to more advanced topics can be found here
 
-[Introduction to Advanced Drones](introduction_to_advanced_drones.md){: .md-button .md-button--primary}
+[Introduction to Advanced Drones](advanced/introduction_to_advanced_drones){: .md-button .md-button--primary}
 
 ## For competition team members
 Opinions and experience from seniors can be found here
 
-[AAVC Reference](AAVC_reference.md){: .md-button .md-button--primary}
+[AAVC Reference](competition/AAVC_reference){: .md-button .md-button--primary}
 
 ## TO-DO
 - [ ] Add README to repo
