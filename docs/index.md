@@ -1,7 +1,7 @@
 ---
 hide:
   - navigation
-  - toc
+#  - toc
 ---
 # MRS Knowledge Base
 
@@ -22,3 +22,7 @@ An guide to more advanced topics can be found here
 Opinions and experience from seniors can be found here
 
 [AAVC Reference](AAVC_reference.md){: .md-button .md-button--primary}
+
+## TO-DO
+- [ ] Add README to repo
+- [ ] Add CONTRIBUTING to repo
