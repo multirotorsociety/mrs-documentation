@@ -19,9 +19,9 @@ theme:
 
 nav:
     - Home: 'index.md'
-    - Basic: 'introduction_to_drones.md'
-    - Advanced: 'introduction_to_advanced_drones.md'
-    - AAVC: 'AAVC_reference.md'
+    - Basic: 'basic/introduction_to_drones.md'
+    - Advanced: 'advanced/introduction_to_advanced_drones.md'
+    - AAVC: 'competition/AAVC_reference.md'
 
 markdown_extensions:
     - attr_list # https://squidfunk.github.io/mkdocs-material/reference/buttons/#attribute-list
