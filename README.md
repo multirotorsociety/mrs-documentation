@@ -3,14 +3,24 @@
 Source code for documentation written by MRS members for MRS members. Documentation is hosted using [MKDocs](https://www.mkdocs.org/)  with the [Material theme](https://squidfunk.github.io/mkdocs-material/)
 
 # Contributing
-See contributing guidelines [here](./CONTRIBUTING.md)
+
+## Guidelines
+This documentation is not meant to be a guide that covers everything under the sky and should not attempt to cover information for PX4, ardupilot etc that is already available on their respective documentation sites.
+
+What this documentation site should be is a way to point people in the right direction and help less experienced members understand high level documentation available.
 
 ## Setup
-Download dependencies with  
+Download MKDocs and Material theme with  
 ```
 python3 -m pip install --upgrade mkdocs mkdocs-material
 ```
 Clone the **DEV** branch (**DO NOT CLONE MASTER**)
+
+Then from inside the repo folder
+
+```
+mkdocs serve
+```
 
 ## Adding/changing documentation
 Pages are written in markdown (`.md`) and are found in the `docs` directory.
