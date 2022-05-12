@@ -24,7 +24,12 @@ nav:
         - 'basic/components.md'
         - 'basic/software_and_configuration.md'
     - 'Advanced': 
-        - 'advanced/introduction_to_advanced_drones.md'
+        - 'advanced/advanced_introduction.md'
+        - 'advanced/pid_tuning.md'
+        - 'advanced/auto_and_semiauto_flight.md'
+        - 'advanced/ardupilot.md'
+        - 'advanced/px4.md'
+        - 'advanced/mavlink.md'
     - 'Competition Reference': 
         - 'competition/AAVC_reference.md'
 

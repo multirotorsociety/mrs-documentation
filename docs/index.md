@@ -16,7 +16,7 @@ An introductory guide to multi rotors for newcomers can be found here
 ## For more experienced members
 An guide to more advanced topics can be found here
 
-[Introduction to Advanced Drones](advanced/introduction_to_advanced_drones){: .md-button .md-button--primary}
+[Introduction to Advanced Drones](advanced/advanced_introduction){: .md-button .md-button--primary}
 
 ## For competition team members
 Opinions and experience from seniors can be found here
