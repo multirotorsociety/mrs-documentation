@@ -1,6 +1,6 @@
 ---
 hide:
-  - navigation
+#  - navigation
 ---
 
 # AAVC (Autonomous Aerial Vehicle Competition) Reference  

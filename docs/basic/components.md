@@ -113,7 +113,7 @@ The Flight Controller is the brain/CPU of the drone, it controls the drone movem
   Matek F405 Flight Controller
 </p>  
 
-The first thing to notice is the arrow located on the board. **The tip of the arrow represents the front of the drone. The FC should be mounted in the correct orientation**. Conveniently, this board has the pins labelled, but normally this will be indicated in the online manual. The important ports will be explained in greater detail below. **Reading the manual of a FC is essential for understanding in all situations**.
+The first thing to notice is the arrow located on the board. **The arrow points towards the front of the drone. The FC should be mounted in the correct orientation**. Conveniently, this board has the pins labelled, but normally this will be indicated in the online manual. The important ports will be explained in greater detail below. **Reading the manual of a FC is essential for understanding in all situations**.
 
 The S1,S2,S3,S4 pins indicate the respective ESC PWM cables that needs to be connected with respect to the pins in the betaflight/flightstack configuration. While depending on the receiver and configuration TX,RX,SBUS pins can be used. 
 
