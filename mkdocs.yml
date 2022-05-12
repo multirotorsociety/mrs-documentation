@@ -19,7 +19,10 @@ theme:
 
 nav:
     - Home: 'index.md'
-    - Basic: 'basic/introduction_to_drones.md'
+    - 'Basic': 
+        - 'basic/basic_introduction.md'
+        - 'basic/components.md'
+        - 'basic/software_and_configuration.md'
     - Advanced: 'advanced/introduction_to_advanced_drones.md'
     - AAVC: 'competition/AAVC_reference.md'
 

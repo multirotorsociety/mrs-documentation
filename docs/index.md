@@ -1,7 +1,7 @@
 ---
 hide:
   - navigation
-#  - toc
+  - toc
 ---
 # MRS Knowledge Base
 
@@ -11,7 +11,7 @@ This is where where we write documentation on various topics for future batches 
 
 An introductory guide to multi rotors for newcomers can be found here
 
-[Introduction to Drones](/basic/introduction_to_drones){: .md-button .md-button--primary}
+[Introduction to Drones](/basic/basic_introduction){: .md-button .md-button--primary}
 
 ## For more experienced members
 An guide to more advanced topics can be found here

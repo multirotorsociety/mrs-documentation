@@ -1,16 +1,9 @@
 ---
 hide:
-  - navigation
+#  - navigation
 ---
 
-# Introduction to Dronery
-
-This quick start guide should provide you with the basic knowledge needed to understand what is required to setup a basic drone. 
-!!! info "Note"
-
-    **This guide will not go into depth about all drone related topics but should provide a basis to allow you to understand how to read online documentation**. As the standards keep changing and manufacturers continue to release new products, **it is vital that you learn how to read online documentation and manuals**.
-
-## Basic Components
+# Components
 
 ![logo](https://imgur.com/AxbRCdi.png)
 
@@ -126,23 +119,6 @@ The S1,S2,S3,S4 pins indicate the respective ESC PWM cables that needs to be con
 
 Newer FCs may come in a set with a 4 in 1 ESC, both having matching connectors and cables to ease connection of the FC to ESC
 
-## Flight Stack
-Also known as the Firmware, the Flight Stack is the software which runs on the Flight Controller
-There are several popular Flight Stacks out there(some of which are forks of others) but the three main ones that we use are
-
-- [Betaflight](https://github.com/betaflight/betaflight/wiki) (_Used primarily for racing/simple crafts_)
-- [PX4](https://px4.io/)
-- [Ardupilot](ardupilot.org)
-
-To configure these firmware's, these various software's are used:
-- [Betaflight Configurator for Betaflight](https://github.com/betaflight/betaflight-configurator)
-- [QGroundControl for PX4](http://qgroundcontrol.com/)
-- [Mission Planner for Ardupilot](http://ardupilot.org/)
-
-For simple flying/racing, betaflight is used but for drones that requires additional sensors or intelligence, PX4 or Ardupilot is used. **We will be using betaflight for this workshop**. The list of supported boards of each firmware is contionusly being updated on their individual websites.
-
-[go to top](#top)
-
 ## Connections (WIP)
 <p align="center">
   <img src=https://www.picclickimg.com/d/l400/pict/271827335392_/1-pair-XT60-male-female-10CM-Silicon-Wire.jpg />
@@ -161,44 +137,3 @@ The Flight Controller requires connection from the 5V/Ground and the PWM motor i
 The Receiver is connected to the Flight Controller.
 
 And thats it!!! With this connections and after configuration your drone should be able to fly.
-
-## Betaflight configuration
-
-WIP
-
-### ESC calibration
-
-TBA
-
-### Radio calibration
-
-TBA
-
-## Supplementary
-
-### Video Camera
-All the camera requires is 5v and ground and it will broadcast a 5.8Ghz signal. Certain flight controllers can output video signal which overlays information such as battery level. There are different channels and bands ensure that multiple video feeds can be broadcasted at the same time on different frequencies.
-
-![logo](https://learnassets.getfpv.com/learn/wp-content/uploads/2019/09/19212447/frequencyChart.png)
-
-### PID Tuning and Rates
-PID tuning is a complicated process that requires knowledge on how the drone flies. The tuning process will not be covered in this document as the workshop drone should fly fine with the default PID. [Many resources regarding this topic is avaliable online](https://oscarliang.com/quadcopter-pid-explained-tuning/) and [betaflight recommends that you tune it in acro](https://github.com/betaflight/betaflight/wiki/PID-Tuning-Guide) which is hard given the skill required for it and the space constraints. For now, here is the difference between PID and rates.
-
-![logo](https://imgur.com/0wtD6J1.png)
-
-PID controls the responsiveness and reaction of the quadcopter. This settings are used by the flight controller in all flight modes.
-
-![logo](https://imgur.com/98hpgIr.png)
-
-Rate controls the sensitivity of your drone from your transmitter. Higher rate means that the drone is move sensitive and moves faster while lower means the drone moves slower but gives more resolution on movements. The degrees/s at the end indicate how fast the drone can turn at full stick deflection in a given second. It is important to note that this rates do not control how to flight controller handles the drone but rather how sensitive your inputs on your radio transmitter are. 
-
-Rate profile are given in curves, which allows for lower sensitivity and more precise movements in the middle but the higher sensitivity at the end allows for the pilot to do large maneuvers when the sticks are deflected to the end.
-
-## Some videos for more advanced or indepth topics if you would like to know more
-[Electronic Speed Controllers (ESCs) and how they drive Brushless Motors](https://www.youtube.com/watch?v=-mLuU1Nscu4)
-
-[Understanding PID Control](https://www.youtube.com/playlist?list=PLn8PRpmsu08pQBgjxYFXSsODEF3Jqmm-y)
-
-[Drone Control Dynamics 1](https://www.youtube.com/watch?v=hGcGPUqB67Q)
-
-[Drone Control Dynamics 2](https://www.youtube.com/watch?v=GK1t8YIvGM8)
