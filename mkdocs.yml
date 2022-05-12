@@ -1,4 +1,4 @@
-site_name: MRS
+site_name: MRS Documentation
 site_description: Multi Rotor SUTD Documentation
 
 theme:
@@ -19,12 +19,19 @@ theme:
 
 nav:
     - Home: 'index.md'
-    - 'Basic': 
+    - 'Basics': 
         - 'basic/basic_introduction.md'
         - 'basic/components.md'
         - 'basic/software_and_configuration.md'
-    - Advanced: 'advanced/introduction_to_advanced_drones.md'
-    - AAVC: 'competition/AAVC_reference.md'
+    - 'Advanced': 
+        - 'advanced/advanced_introduction.md'
+        - 'advanced/pid_tuning.md'
+        - 'advanced/auto_and_semiauto_flight.md'
+        - 'advanced/ardupilot.md'
+        - 'advanced/px4.md'
+        - 'advanced/mavlink.md'
+    - 'Competition Reference': 
+        - 'competition/AAVC_reference.md'
 
 markdown_extensions:
     - attr_list # https://squidfunk.github.io/mkdocs-material/reference/buttons/#attribute-list
