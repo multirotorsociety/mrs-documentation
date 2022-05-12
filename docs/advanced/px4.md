@@ -246,7 +246,7 @@ Indicates Readiness of Flight
 
 <https://docs.px4.io/v1.9.0/en/getting_started/led_meanings.html>
 
-## Other Params
+### Other Params
  UAVCAN_ENABLE - For GPS via CAN (PX4)
 
 ## Misc Tips
