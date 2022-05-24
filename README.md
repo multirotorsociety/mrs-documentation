@@ -14,13 +14,9 @@ Download MKDocs and Material theme with
 ```
 python3 -m pip install --upgrade mkdocs mkdocs-material
 ```
-Clone the **DEV** branch (**DO NOT CLONE MASTER**)
+Clone the master branch
 
-Then from inside the repo folder
-
-```
-mkdocs serve
-```
+Then from inside the repo folder, run `mkdocs serve` to serve locally at 127.0.0.1:8000. Edits to `.md` files will show up in realtime
 
 ## Adding/changing documentation
 Pages are written in markdown (`.md`) and are found in the `docs` directory.
