@@ -11,7 +11,10 @@ hide:
 Firstly, the things that create lift, the propellers.
 
 !!! warning
-	While this is the first section, this should always be put on **LAST** only after all other checks have been performed. ALWAYS CHECK YOUR SURROUNDINGS AND ASK SOMEONE WITH EXPERIENCE TO CHECK BEFORE PUTTING ON PROPELLERS FOR MAIDEN FLIGHT. Propellers can gravely injure people.
+	While this is the first section, this should always be put on **LAST** only after all other checks have been performed. 
+	
+!!! danger
+	Always check your surroundings and ask somone with experience to check before putting on propellers for maiden flight. Propellers can gravely injure people.
 
 <p align="center">
   <img src=https://imgur.com/oabVHUj.png />
