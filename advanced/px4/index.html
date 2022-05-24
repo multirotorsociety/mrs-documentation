@@ -1,0 +1,1297 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Multi Rotor SUTD Documentation">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
+    
+    
+      
+        <title>PX4 Info and Documentation - MRS Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.c382b1dc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cc9b2e1e.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#02a6f2">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="blue">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#px4-info-and-documentation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="MRS Documentation" class="md-header__button md-logo" aria-label="MRS Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.5 1C8 1 10 3 10 5.5c0 .88-.25 1.7-.69 2.4l.1.1h5.18l.1-.1c-.44-.7-.69-1.52-.69-2.4C14 3 16 1 18.5 1S23 3 23 5.5 21 10 18.5 10c-.88 0-1.7-.25-2.4-.69l-1.1 1.1v3.18l1.1 1.1c.7-.44 1.52-.69 2.4-.69 2.5 0 4.5 2 4.5 4.5S21 23 18.5 23 14 21 14 18.5c0-.88.25-1.7.69-2.4l-.1-.1H9.41l-.1.1c.44.7.69 1.52.69 2.4C10 21 8 23 5.5 23S1 21 1 18.5 3 14 5.5 14c.88 0 1.7.25 2.4.69l1.1-1.1v-3.18l-1.1-1.1c-.7.44-1.52.69-2.4.69C3 10 1 8 1 5.5S3 1 5.5 1m0 2A2.5 2.5 0 0 0 3 5.5 2.5 2.5 0 0 0 5.5 8 2.5 2.5 0 0 0 8 5.5 2.5 2.5 0 0 0 5.5 3m0 13A2.5 2.5 0 0 0 3 18.5 2.5 2.5 0 0 0 5.5 21 2.5 2.5 0 0 0 8 18.5 2.5 2.5 0 0 0 5.5 16m13-13A2.5 2.5 0 0 0 16 5.5 2.5 2.5 0 0 0 18.5 8 2.5 2.5 0 0 0 21 5.5 2.5 2.5 0 0 0 18.5 3m0 13a2.5 2.5 0 0 0-2.5 2.5 2.5 2.5 0 0 0 2.5 2.5 2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-2.5-2.5M3.91 17.25l1.13.66c.13-.1.29-.16.46-.16a.75.75 0 0 1 .75.75l-.01.1 1.13.65-.28.5-1.13-.66c-.13.1-.29.16-.46.16a.75.75 0 0 1-.75-.75l.01-.1-1.13-.65.28-.5m-.28-11 1.13-.65-.01-.1a.75.75 0 0 1 .75-.75c.17 0 .33.06.46.16l1.13-.66.28.5-1.13.65.01.1a.75.75 0 0 1-.75.75c-.17 0-.33-.06-.46-.16l-1.13.66-.28-.5m13.28-2 1.13.66c.13-.1.29-.16.46-.16a.75.75 0 0 1 .75.75l-.01.1 1.13.65-.28.5-1.13-.66c-.13.1-.29.16-.46.16a.75.75 0 0 1-.75-.75l.01-.1-1.13-.65.28-.5m-.28 15 1.12-.75a.75.75 0 0 1 .75-.75c.17 0 .33.06.46.16l1.13-.66.28.5-1.12.75a.75.75 0 0 1-.75.75c-.17 0-.33-.06-.46-.16l-1.13.66-.28-.5Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MRS Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              PX4 Info and Documentation
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../basic/basic_introduction/" class="md-tabs__link">
+        Basics
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../advanced_introduction/" class="md-tabs__link md-tabs__link--active">
+        Advanced
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../competition/AAVC_reference/" class="md-tabs__link">
+        Competition Reference
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="MRS Documentation" class="md-nav__button md-logo" aria-label="MRS Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.5 1C8 1 10 3 10 5.5c0 .88-.25 1.7-.69 2.4l.1.1h5.18l.1-.1c-.44-.7-.69-1.52-.69-2.4C14 3 16 1 18.5 1S23 3 23 5.5 21 10 18.5 10c-.88 0-1.7-.25-2.4-.69l-1.1 1.1v3.18l1.1 1.1c.7-.44 1.52-.69 2.4-.69 2.5 0 4.5 2 4.5 4.5S21 23 18.5 23 14 21 14 18.5c0-.88.25-1.7.69-2.4l-.1-.1H9.41l-.1.1c.44.7.69 1.52.69 2.4C10 21 8 23 5.5 23S1 21 1 18.5 3 14 5.5 14c.88 0 1.7.25 2.4.69l1.1-1.1v-3.18l-1.1-1.1c-.7.44-1.52.69-2.4.69C3 10 1 8 1 5.5S3 1 5.5 1m0 2A2.5 2.5 0 0 0 3 5.5 2.5 2.5 0 0 0 5.5 8 2.5 2.5 0 0 0 8 5.5 2.5 2.5 0 0 0 5.5 3m0 13A2.5 2.5 0 0 0 3 18.5 2.5 2.5 0 0 0 5.5 21 2.5 2.5 0 0 0 8 18.5 2.5 2.5 0 0 0 5.5 16m13-13A2.5 2.5 0 0 0 16 5.5 2.5 2.5 0 0 0 18.5 8 2.5 2.5 0 0 0 21 5.5 2.5 2.5 0 0 0 18.5 3m0 13a2.5 2.5 0 0 0-2.5 2.5 2.5 2.5 0 0 0 2.5 2.5 2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-2.5-2.5M3.91 17.25l1.13.66c.13-.1.29-.16.46-.16a.75.75 0 0 1 .75.75l-.01.1 1.13.65-.28.5-1.13-.66c-.13.1-.29.16-.46.16a.75.75 0 0 1-.75-.75l.01-.1-1.13-.65.28-.5m-.28-11 1.13-.65-.01-.1a.75.75 0 0 1 .75-.75c.17 0 .33.06.46.16l1.13-.66.28.5-1.13.65.01.1a.75.75 0 0 1-.75.75c-.17 0-.33-.06-.46-.16l-1.13.66-.28-.5m13.28-2 1.13.66c.13-.1.29-.16.46-.16a.75.75 0 0 1 .75.75l-.01.1 1.13.65-.28.5-1.13-.66c-.13.1-.29.16-.46.16a.75.75 0 0 1-.75-.75l.01-.1-1.13-.65.28-.5m-.28 15 1.12-.75a.75.75 0 0 1 .75-.75c.17 0 .33.06.46.16l1.13-.66.28.5-1.12.75a.75.75 0 0 1-.75.75c-.17 0-.33-.06-.46-.16l-1.13.66-.28-.5Z"/></svg>
+
+    </a>
+    MRS Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" data-md-state="indeterminate" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Basics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Basics" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Basics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/basic_introduction/" class="md-nav__link">
+        Introduction to Dronery
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/components/" class="md-nav__link">
+        Components
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/software_and_configuration/" class="md-nav__link">
+        Software and Configuration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/3d_printing/" class="md-nav__link">
+        Introduction to 3D Printing
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Advanced
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Advanced" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Advanced
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../advanced_introduction/" class="md-nav__link">
+        Introduction to ADVANCED Dronery
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pid_tuning/" class="md-nav__link">
+        PID Tuning
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../auto_and_semiauto_flight/" class="md-nav__link">
+        Autonomous and Semi-Autonomous Flight
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ardupilot/" class="md-nav__link">
+        Ardupilot Info and Documentation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          PX4 Info and Documentation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        PX4 Info and Documentation
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#full-list-of-config" class="md-nav__link">
+    Full list of Config
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flight-modes" class="md-nav__link">
+    Flight Modes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gps-and-ekf" class="md-nav__link">
+    GPS and EKF
+  </a>
+  
+    <nav class="md-nav" aria-label="GPS and EKF">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gps-ekf-params" class="md-nav__link">
+    GPS EKF Params
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arming-checks" class="md-nav__link">
+    Arming Checks
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#other-parameters" class="md-nav__link">
+    Other Parameters
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#px4-sensors" class="md-nav__link">
+    PX4 Sensors
+  </a>
+  
+    <nav class="md-nav" aria-label="PX4 Sensors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tf-mini" class="md-nav__link">
+    TF Mini
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optical-flow" class="md-nav__link">
+    Optical Flow
+  </a>
+  
+    <nav class="md-nav" aria-label="Optical Flow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hereflow" class="md-nav__link">
+    Hereflow
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#here2-gps" class="md-nav__link">
+    Here+/2 GPS
+  </a>
+  
+    <nav class="md-nav" aria-label="Here+/2 GPS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#here-here-v2-led-meaning" class="md-nav__link">
+    Here+ /Here+ v2 LED Meaning
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#led-status" class="md-nav__link">
+    LED Status
+  </a>
+  
+    <nav class="md-nav" aria-label="LED Status">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ui-led-on-i2c-device-gps-led-same-as-here2-led" class="md-nav__link">
+    UI LED - On I2C device (GPS LED, same as here2 LED)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#status-led-on-fc" class="md-nav__link">
+    Status LED (on FC)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-params" class="md-nav__link">
+    Other Params
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#misc-tips" class="md-nav__link">
+    Misc Tips
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mavlink/" class="md-nav__link">
+        MAVLink
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" data-md-state="indeterminate" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Competition Reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Competition Reference" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Competition Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../competition/AAVC_reference/" class="md-nav__link">
+        AAVC (Autonomous Aerial Vehicle Competition) Reference
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#full-list-of-config" class="md-nav__link">
+    Full list of Config
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flight-modes" class="md-nav__link">
+    Flight Modes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gps-and-ekf" class="md-nav__link">
+    GPS and EKF
+  </a>
+  
+    <nav class="md-nav" aria-label="GPS and EKF">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gps-ekf-params" class="md-nav__link">
+    GPS EKF Params
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arming-checks" class="md-nav__link">
+    Arming Checks
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#other-parameters" class="md-nav__link">
+    Other Parameters
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#px4-sensors" class="md-nav__link">
+    PX4 Sensors
+  </a>
+  
+    <nav class="md-nav" aria-label="PX4 Sensors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tf-mini" class="md-nav__link">
+    TF Mini
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optical-flow" class="md-nav__link">
+    Optical Flow
+  </a>
+  
+    <nav class="md-nav" aria-label="Optical Flow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hereflow" class="md-nav__link">
+    Hereflow
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#here2-gps" class="md-nav__link">
+    Here+/2 GPS
+  </a>
+  
+    <nav class="md-nav" aria-label="Here+/2 GPS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#here-here-v2-led-meaning" class="md-nav__link">
+    Here+ /Here+ v2 LED Meaning
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#led-status" class="md-nav__link">
+    LED Status
+  </a>
+  
+    <nav class="md-nav" aria-label="LED Status">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ui-led-on-i2c-device-gps-led-same-as-here2-led" class="md-nav__link">
+    UI LED - On I2C device (GPS LED, same as here2 LED)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#status-led-on-fc" class="md-nav__link">
+    Status LED (on FC)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-params" class="md-nav__link">
+    Other Params
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#misc-tips" class="md-nav__link">
+    Misc Tips
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="px4-info-and-documentation">PX4 Info and Documentation<a class="headerlink" href="#px4-info-and-documentation" title="Permanent link">#</a></h1>
+<h2 id="full-list-of-config">Full list of Config<a class="headerlink" href="#full-list-of-config" title="Permanent link">#</a></h2>
+<p><a href="http://docs.px4.io/v1.9.0/en/advanced_config/parameter_reference.html">http://docs.px4.io/v1.9.0/en/advanced_config/parameter_reference.html</a></p>
+<h2 id="flight-modes">Flight Modes<a class="headerlink" href="#flight-modes" title="Permanent link">#</a></h2>
+<ul>
+<li>Manual/Stabilized - same for multi rotors, transmit pitch and roll commands to output mixer, output mixer also returns drone to an angle of zero when joysticks are centered.</li>
+<li>Acro - transmit angular rates(how fast to go to an angle)</li>
+<li>Position - Same as manual/stabilized but tries to correct for wind. May cause crash on larger drones if PID is not tuned properly as will start oscillating. <strong>Exiting Mission mode through max throttle will automatically <a href="https://github.com/PX4/px4_user_guide/blob/master/en/getting_started/flight_modes.md">change the mode to position mode</a></strong></li>
+</ul>
+<p>Reference: <a href="https://dev.px4.io/v1.9.0/en/concept/flight_modes.html">https://dev.px4.io/v1.9.0/en/concept/flight_modes.html</a></p>
+<h2 id="gps-and-ekf">GPS and EKF<a class="headerlink" href="#gps-and-ekf" title="Permanent link">#</a></h2>
+<p>The Estimation and Control Library (ECL) uses an Extended Kalman Filter (EKF) algorithm to process sensor measurements and provide an estimate of the following states:</p>
+<ul>
+<li>Quaternion defining the rotation from North, East, Down local earth frame to X,Y,Z body frame</li>
+<li>Velocity at the IMU - North,East,Down (m/s)</li>
+<li>Position at the IMU - North,East,Down (m)</li>
+<li>IMU delta angle bias estimates - X,Y,Z (rad)</li>
+<li>IMU delta velocity bias estimates - X,Y,Z(m/s)</li>
+<li>Earth Magnetic field components - North,East,Down (gauss)</li>
+<li>Vehicle body frame magnetic field bias - X,Y,Z (gauss)</li>
+<li>Wind velocity - North,East (m/s)</li>
+</ul>
+<p>Basically, the filters that process the sensor data.
+EKF2 processes and corrects for errors generated by aerodynamic disturbances caused by vehicle wind relative velocity and orientation.
+ECL library can be used with better performance but requires knowledge in tuning kalman filters.</p>
+<p><a href="https://docs.px4.io/v1.9.0/en/advanced_config/tuning_the_ecl_ekf.html">EKF Tuning</a></p>
+<h3 id="gps-ekf-params">GPS EKF Params<a class="headerlink" href="#gps-ekf-params" title="Permanent link">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Minimum required</th>
+<th>Average Value</th>
+<th>Units</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>eph</td>
+<td>3 (<a href="https://docs.px4.io/v1.9.0/en/advanced_config/parameter_reference.html#EKF2_REQ_EPH">EKF2_REQ_EPH</a>)</td>
+<td>0.8</td>
+<td>m</td>
+<td>Standard deviation of horizontal position error</td>
+</tr>
+<tr>
+<td>epv</td>
+<td>5 (<a href="https://docs.px4.io/v1.9.0/en/advanced_config/parameter_reference.html#EKF2_REQ_EPV">EKF2_REQ_EPV</a>)</td>
+<td>1.5</td>
+<td>m</td>
+<td>Standard deviation of vertical position error</td>
+</tr>
+<tr>
+<td>Number of satellites</td>
+<td>6 (<a href="https://docs.px4.io/v1.9.0/en/advanced_config/parameter_reference.html#EKF2_REQ_NSATS">EKF2_REQ_NSATS</a>)</td>
+<td>14</td>
+<td>-</td>
+<td></td>
+</tr>
+<tr>
+<td>Speed variance</td>
+<td>0.5</td>
+<td>0.3</td>
+<td>m/s</td>
+<td></td>
+</tr>
+<tr>
+<td>Fix type</td>
+<td>3</td>
+<td>4</td>
+<td>-</td>
+<td></td>
+</tr>
+<tr>
+<td>hpos_drift_rate</td>
+<td>0.1 (<a href="https://docs.px4.io/v1.9.0/en/advanced_config/parameter_reference.html#EKF2_REQ_HDRIFT">EKF2_REQ_HDRIFT</a>)</td>
+<td>0.01</td>
+<td>m/s</td>
+<td>Drift rate calculated from reported GPS position (when stationary).</td>
+</tr>
+<tr>
+<td>vpos_drift_rate</td>
+<td>0.2 (<a href="https://docs.px4.io/v1.9.0/en/advanced_config/parameter_reference.html#EKF2_REQ_VDRIFT">EKF2_REQ_VDRIFT</a>)</td>
+<td>0.02</td>
+<td>m/s</td>
+<td>Drift rate calculated from reported GPS altitude (when stationary).</td>
+</tr>
+<tr>
+<td>hspd</td>
+<td>0.1 (<a href="https://docs.px4.io/v1.9.0/en/advanced_config/parameter_reference.html#EKF2_REQ_SACC">EKF2_REQ_SACC</a>)</td>
+<td>0.01</td>
+<td>m/s</td>
+<td>Filtered magnitude of reported GPS horizontal velocity.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="arming-checks">Arming Checks<a class="headerlink" href="#arming-checks" title="Permanent link">#</a></h2>
+<p><em>EKF Preflight Checks/Errors
+The following errors (with associated checks and parameters) are reported by the EKF (and propagate to QGroundControl):</em></p>
+<p><strong>PREFLIGHT FAIL: EKF HGT ERROR:</strong></p>
+<ul>
+<li>This error is produced when the IMU and height measurement data are inconsistent.</li>
+<li>Perform an accel and gyro calibration and restart the vehicle. If the error persists, check the height sensor data for problems.</li>
+<li>The check is controlled by the COM_ARM_EKF_HGT parameter.</li>
+</ul>
+<p><strong>PREFLIGHT FAIL: EKF VEL ERROR:</strong></p>
+<ul>
+<li>This error is produced when the IMU and GPS velocity measurement data are inconsistent.</li>
+<li>Check the GPS velocity data for un-realistic data jumps. If GPS quality looks OK, perform an accel and gyro calibration and restart the vehicle.</li>
+<li>The check is controlled by the COM_ARM_EKF_VEL parameter.</li>
+</ul>
+<p><strong>PREFLIGHT FAIL: EKF HORIZ POS ERROR:</strong></p>
+<ul>
+<li>This error is produced when the IMU and position measurement data (either GPS or external vision) are inconsistent.</li>
+<li>Check the position sensor data for un-realistic data jumps. If data quality looks OK, perform an accel and gyro calibration and restart the vehicle.</li>
+<li>The check is controlled by the COM_ARM_EKF_POS parameter.</li>
+</ul>
+<p><strong>PREFLIGHT FAIL: EKF YAW ERROR:</strong></p>
+<ul>
+<li>This error is produced when the yaw angle estimated using gyro data and the yaw angle from the magnetometer or external vision system are inconsistent.</li>
+<li>Check the IMU data for large yaw rate offsets and check the magnetometer alignment and calibration.</li>
+<li>The check is controlled by the COM_ARM_EKF_POS parameter</li>
+</ul>
+<p><strong>PREFLIGHT FAIL: EKF HIGH IMU ACCEL BIAS:</strong></p>
+<ul>
+<li>This error is produced when the IMU accelerometer bias estimated by the EKF is excessive.</li>
+<li>The check is controlled by the COM_ARM_EKF_AB parameter.</li>
+</ul>
+<p><strong>PREFLIGHT FAIL: EKF HIGH IMU GYRO BIAS:</strong></p>
+<ul>
+<li>This error is produced when the IMU gyro bias estimated by the EKF is excessive.</li>
+<li>The check is controlled by the COM_ARM_EKF_GB parameter.</li>
+</ul>
+<p><strong>PREFLIGHT FAIL: ACCEL SENSORS INCONSISTENT - CHECK CALIBRATION:</strong></p>
+<ul>
+<li>This error message is produced when the acceleration measurements from different IMU units are inconsistent.</li>
+<li>This check only applies to boards with more than one IMU.</li>
+<li>The check is controlled by the COM_ARM_IMU_ACC parameter.</li>
+</ul>
+<p><strong>PREFLIGHT FAIL: GYRO SENSORS INCONSISTENT - CHECK CALIBRATION:</strong></p>
+<ul>
+<li>This error message is produced when the angular rate measurements from different IMU units are inconsistent.</li>
+<li>This check only applies to boards with more than one IMU.</li>
+<li>The check is controlled by the COM_ARM_IMU_GYR parameter.</li>
+</ul>
+<p><strong>PREFLIGHT FAIL: COMPASS SENSORS INCONSISTENT - CHECK CALIBRATION:</strong></p>
+<ul>
+<li>This error message is produced when the difference in measurements from different compass sensors is too great.</li>
+<li>It indicates bad calibration, orientation or magnetic interference.</li>
+<li>This check only applies to when more than one compass/magnetometer is connected.</li>
+<li>The check is controlled by the COM_ARM_MAG parameter.</li>
+</ul>
+<p><strong>PREFLIGHT FAIL: EKF INTERNAL CHECKS:</strong></p>
+<ul>
+<li>This error message is generated if the innovation magnitudes of either the horizontal GPS velocity, magnetic yaw, vertical GPS velocity or vertical position sensor (Baro by default but could be range finder or GPS if non-standard parameters are being used) are excessive. Innovations are the difference between the value predicted by the inertial navigation calculation and measured by the sensor.</li>
+<li>Users should check the innovation levels in the log file to determine the cause. These can be found under the ekf2_innovations message. Common problems/solutions include:<ul>
+<li>IMU drift on warmup. May be resolved by restarting the autopilot. May require an IMU accel and gyro calibration.</li>
+<li>Adjacent magnetic interference combined with vehicle movement. Resolve my moving vehicle and waiting or re-powering.</li>
+<li>Bad magnetometer calibration combined with vehicle movement. Resolve by recalibrating.</li>
+<li>Initial shock or rapid movement on startup that caused a bad inertial nav solution. Resolve by restarting the vehicle and minimizing movement for the first 5 seconds.</li>
+</ul>
+</li>
+</ul>
+<h2 id="other-parameters">Other Parameters<a class="headerlink" href="#other-parameters" title="Permanent link">#</a></h2>
+<p>The following parameters also affect preflight checks.</p>
+<p><strong>COM_ARM_WO_GPS</strong><br />
+The <code>COM_ARM_WO_GPS</code> parameter controls whether or not arming is allowed without a global position estimate.</p>
+<ul>
+<li>1 (default): Arming is allowed without a position estimate for flight modes that do not require position information (only).</li>
+<li>0: Arming is allowed only if EKF is providing a global position estimate and EFK GPS quality checks are passing</li>
+</ul>
+<p><strong>COM_ARM_EKF_YAW</strong><br />
+The COM_ARM_EKF_YAW parameter determines the maximum difference (in radians) between the navigation yaw angle and magnetic yaw angle (magnetometer or external vision) allowed before preflight checks fail. The default value of 0.5 allows the differences to be no more than 50% of the maximum tolerated by the EKF and provides some margin for error increase when flight commences. It can fail if the yaw gyro has a large offset or if the vehicle is moved or rotated in the presence of a bad magnetic interference or magnetometer calibration.</p>
+<h2 id="px4-sensors">PX4 Sensors<a class="headerlink" href="#px4-sensors" title="Permanent link">#</a></h2>
+<p>Certain important advice.</p>
+<p><strong>Ensure that the EKF2_AID_MASKS is changed to allow for visual or gps fusion</strong></p>
+<p>The 1.10 firmware allow for configuration on sensors on multiple port instead of only running on the default one. For example, the <a href="https://docs.px4.io/v1.9.0/en/advanced_config/parameter_reference.html#SENS_TFMINI_CFG">SENS_TFMINI_CFG</a> parameter. However, do note that this selection is based on the <strong>SERIAL PORTS ON THE ORIGINAL PIXHAWK 1</strong> (https://www.mathworks.com/help/supportpkg/px4/ref/port-mapping-for-serial.html). So, if you were using the GPS2 port on the pixhawk 2, which is the /dev/ttyS6 port, you would need to choose the relevant S6 port on the pixhawk 1 which is serial 4. (The UART port on the pixhawk 4 is serial 4 too).</p>
+<p>Take note that you can still manually start the sensor with <sensorname start -d /dev/ttyS6> but if the correct serial port is chosen it should automatically start everytime.</p>
+<h3 id="tf-mini"><a href="https://docs.px4.io/v1.9.0/en/sensor/tfmini.html">TF Mini</a><a class="headerlink" href="#tf-mini" title="Permanent link">#</a></h3>
+<p>By default on 1.8.2, PX4 reads the rangefinder port at <strong>SERIAL4/GPS2</strong> which corresponds to the/dev/tty/S6. the port can be rebound with SENS_TFMINI_CFG on later versions.</p>
+<p>Ensure that SENS_EN_TFMINI is activated depending on firmware version. RNG AID should be enabled too.
+Use the mavlink console to probe if the driver is running.</p>
+<div class="highlight"><pre><span></span><code>tfmini start -d /dev/tty/S6
+tfmini status
+</code></pre></div>
+<p>Related params</p>
+<div class="highlight"><pre><span></span><code>EKF2_HGT_MODE  - changes the primary height data source, still uses other <span class="k">for</span> fusing
+EKF2_RNG_AID -can be enabled to reduce the barometer inaccuracies caused by ground effect <span class="k">if</span> the range sensor is not the primary sensor.
+MPC_ALT_MODE - follow altitude or terrain
+</code></pre></div>
+<p>Use the listener distance_sensor command to test if it still works. A distance_sensor tab should pop up too.</p>
+<p><a href="https://www.mathworks.com/help/supportpkg/px4/ref/port-mapping-for-serial.html">Heres a useful link for pixhawk fc serial port mapping</a></p>
+<h3 id="optical-flow">Optical Flow<a class="headerlink" href="#optical-flow" title="Permanent link">#</a></h3>
+<p>Before attempting to implement optical flow for the first time, read through <a href="https://docs.px4.io/v1.9.0/en/sensor/optical_flow.html">this entire page</a>. Aside from the obvious stuff like ensuring that the orientation and the offsets of the optical flow sensor is correct, <strong>ensure that a separate downward facing rangefinder is used</strong>(barometer is not allowed) and that integrated_xgyro and integrated_x,.. are the same. For sensors without an integrated imu, integrated_xgyro will show nan and integrated_x will not correspond with HIGHRES_IMU/xgyro.</p>
+<p><strong>If connected to PX4 via (USB) MAVLink the Optical Flow device must publish to the OPTICAL_FLOW_RAD topic, and the distance sensor must publish to the DISANCE_SENSOR topic.</strong> Only then can fusing occur. To view this topic over telem, the param MAV_1_MODE can be changed from normal to onboard to force all the messages to be sent. This can be checked with the command <em>mavlink status</em>. Do note that this causes other issues such as inability to pick up impulse inputs on the graph during PID Tuning, so any mavlink driver is set to this during tuning.</p>
+<p>Aside from that, diagnosing flow issues are abit harder due to the lack of feedback in PX4. Do check your 1)orientation 2)altitude(needs to be high enough) and 3)mpc_xy_vel pids 4) flow sensor offset with <a href="https://docs.px4.io/master/en/advanced_config/parameter_reference.html#EKF2_OF_POS_X">EKF2_OF_POS</a>. If tuning is still required, try reducing the mpc_xy_vel_p to 0.08. If that does not help, try changing mpc_xy_vel_d before touching the other mpc params but do note that it should not need to be changed much as the defaults should work okay with the .</p>
+<h4 id="hereflow">Hereflow<a class="headerlink" href="#hereflow" title="Permanent link">#</a></h4>
+<p>Take note that on pre 2019 pixhawk 2.1 boards the can 1 and can 2 boards are swapped. The hereflow should be plugged in on the can 1 port by default.</p>
+<p>The following links contain the required perimeters for it.</p>
+<ul>
+<li><a href="https://discuss.px4.io/t/hereflow-sensor-with-uavcan-not-responding/14694">Hereflow</a></li>
+<li><a href="https://github.com/PX4/px4_user_guide/blob/c03a25be2724e5d89e9ece47425423d5cd100a1d/en/sensor/pmw3901.md">PMW3901</a></li>
+</ul>
+<p>Do note that as of 1.10 the downward rangefinder does not seem to be supported. Hence, a seperate downward facing rangefinder might be needed.</p>
+<p>The status of the hereflow can be checked with the mavlink commands <code>UAVCAN status</code> and <code>listener optical_flow</code>. Do note that the optical flow mavlink messages are not broadcasted over telem(in PX4) by default to save bandwidth.</p>
+<p><a href="https://discuss.cubepilot.org/t/hereflow-setup-instructions-alpha-batch/341">Do note that the x and y axis in the hereflow manual seems to be swapped in px4</a> </p>
+<p>Personally, I had issues getting the hereflow to work in the horizontal position so I placed it in the vertical position with the circle on the <a href="https://docs.px4.io/master/en/sensor/pmw3901.html">pmw3901</a> facing the back.</p>
+<h3 id="here2-gps">Here+/2 GPS<a class="headerlink" href="#here2-gps" title="Permanent link">#</a></h3>
+<p><strong>Considerations</strong>
+<em>These errors show up as generic errors in qgc and is not diagnosable via logs</em></p>
+<ul>
+<li>Ideally the base and rover antenna to have clear view of the sky that is 30 degrees above horizon.</li>
+<li>To attain GPS lock look for open spaces with view of sky instead of indoor areas</li>
+<li><strong>Place GPS away from other electronic devices which generate noise. Eg, FC, other antennas, wifi antennas, power transformers  and anything that emits EM/radio waves.</strong> <a href="https://ardupilot.org/copter/docs/common-magnetic-interference.html#common-magnetic-interference">https://ardupilot.org/copter/docs/common-magnetic-interference.html#common-magnetic-interference</a></li>
+<li>Likewise with the Pixhawk FCU, dampening might be required</li>
+</ul>
+<p><strong>Time-To-First-Fix</strong></p>
+<table>
+<thead>
+<tr>
+<th>123</th>
+<th>GPS &amp; GLONASS</th>
+<th>GPS &amp; BeiDou</th>
+<th>GPS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cold Start</td>
+<td>26S</td>
+<td>28S</td>
+<td>29S</td>
+</tr>
+<tr>
+<td>Hot Start</td>
+<td>1S</td>
+<td>1S</td>
+<td>1S</td>
+</tr>
+<tr>
+<td>Aided Starts</td>
+<td>2S</td>
+<td>3S</td>
+<td>2S</td>
+</tr>
+</tbody>
+</table>
+<h4 id="here-here-v2-led-meaning">Here+ /Here+ v2 LED Meaning<a class="headerlink" href="#here-here-v2-led-meaning" title="Permanent link">#</a></h4>
+<p><strong>[PROOFREADING NEEDED]There are 3 LEDs on the Here2, two at the side which are the UI LED and one in the center which should flash red with an emergency stop button in the center. If the two UI LEDs are not flashing, chances are <a href="http://www.hex.aero/wp-content/uploads/2019/03/Here2-CAN-Instruction.pdf">the mode switch</a> within the here2 (casing) is in I2C Mode(default) instead of CAN Mode and swap to I2C cables. This I2C and CAN modes are for the compass only, GPS is still connected via Serial</strong>.  </p>
+<p>On PX4 this is information is vital as the errors are not very clear or displayed. However Ardupilot does display more GPS errors which makes it easier to diagnose even without LEDs.</p>
+<ul>
+<li>Flashing red and blue: Initializing sensors. Place the vehicle still and level while it initializes the sensors.</li>
+<li>Flashing blue: Disarmed, no GPS lock. Auto-mission, loiter and return-to-launch flight modes require GPS lock</li>
+<li>Solid blue: Armed with no GPS lock</li>
+<li>Flashing green: Disarmed (ready to arm), GPS lock acquired. Quick double tone when disarming from the armed state.</li>
+<li>Fast Flashing green: Same as above but GPS is using SBAS (so should have better position estimate)</li>
+<li>Solid green: with single long tone at time of arming: Armed, GPS lock acquired. Ready to fly!</li>
+<li>Double flashing yellow: Failing pre-arm checks (system refuses to arm)</li>
+<li>Single Flashing yellow: Radio failsafe activated</li>
+<li>Flashing yellow - with quick beeping tone: Battery failsafe activated</li>
+<li>Flashing yellow and blue- with high-high-high-low tone sequence (dah-dah-dah-doh): GPS glitch or GPS failsafe activated</li>
+<li>Flashing red and yellow: EKF or Inertial Nav failure</li>
+<li>Flashing purple and yellow: Barometer glitch Solid Red: Error，usually due to the SD card（re-plug or place the SD card to solve）,MTD or IMU，you may check the SD card and have a look at BOOT.txt for boot message analysis</li>
+<li>Solid red with SOS tone sequence: SD card missing or SD card bad format</li>
+<li>No light when power on: No firmware，firmware lost，SD card missing or bad format（ac3.4 or higher version）</li>
+</ul>
+<p><a href="https://docs.cubepilot.org/user-guides/here+/here+v2-user-manual">https://docs.cubepilot.org/user-guides/here+/here+v2-user-manual</a></p>
+<h2 id="led-status">LED Status<a class="headerlink" href="#led-status" title="Permanent link">#</a></h2>
+<h3 id="ui-led-on-i2c-device-gps-led-same-as-here2-led">UI LED - On I2C device (GPS LED, same as here2 LED)<a class="headerlink" href="#ui-led-on-i2c-device-gps-led-same-as-here2-led" title="Permanent link">#</a></h3>
+<p>Indicates Readiness of Flight
+- <strong>[Solid Blue] Armed, No GPS Lock:</strong> Indicates vehicle has been armed and has no position lock from a GPS unit. When vehicle is armed, PX4 will unlock control of the motors, allowing you to fly your drone. As always, exercise caution when arming, as large propellers can be dangerous at high revolutions. Vehicle cannot perform guided missions in this mode.
+- <strong>[Pulsing Blue] Disarmed, No GPS Lock:</strong> Similar to above, but your vehicle is disarmed. This means you will not be able to control motors, but all other subsystems are working.
+- <strong>[Solid Green] Armed, GPS Lock:</strong> Indicates vehicle has been armed and has a valid position lock from a GPS unit. When vehicle is armed, PX4 will unlock control of the motors, allowing you to fly your drone. As always, exercise caution when arming, as large propellers can be dangerous at high revolutions. In this mode, vehicle can perform guided missions.
+- <strong>[Pulsing Green] Disarmed, GPS Lock:</strong> Similar to above, but your vehicle is disarmed. This means you will not be able to control motors, but all other subsystems including GPS position lock are working.
+- <strong>[Solid Purple] Failsafe Mode:</strong> This mode will activate whenever vehicle encounters an issue during flight, such as losing manual control, a critically low battery, or an internal error. During failsafe mode, vehicle will attempt to return to its takeoff location, or may simply descend where it currently is.
+- <strong>[Solid Amber] Low Battery Warning:</strong> Indicates your vehicle's battery is running dangerously low. After a certain point, vehicle will go into failsafe mode. However, this mode should signal caution that it's time to end this flight.
+- <strong>[Blinking Red] Error / Setup Required:</strong> Indicates that your autopilot needs to be configured or calibrated before flying. Attach your autopilot to a Ground Control Station to verify what the problem is. If you have completed the setup process and autopilot still appears as red and flashing, there may be another error.</p>
+<h3 id="status-led-on-fc">Status LED (on FC)<a class="headerlink" href="#status-led-on-fc" title="Permanent link">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>Color</th>
+<th>Label</th>
+<th>Bootloader usage</th>
+<th>APP usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Blue</td>
+<td>ACT (Activity)</td>
+<td>Flutters when the bootloader is receiving data</td>
+<td>Indication of ARM state</td>
+</tr>
+<tr>
+<td>Red/Amber</td>
+<td>B/E (In Bootloader / Error)</td>
+<td>Flutters when in the bootloader</td>
+<td>Indication of an ERROR</td>
+</tr>
+<tr>
+<td>Green</td>
+<td>PWR (Power)</td>
+<td>Not used by bootloader</td>
+<td>Indication of ARM state</td>
+</tr>
+</tbody>
+</table>
+<p><a href="https://docs.px4.io/v1.9.0/en/getting_started/led_meanings.html">https://docs.px4.io/v1.9.0/en/getting_started/led_meanings.html</a></p>
+<h3 id="other-params">Other Params<a class="headerlink" href="#other-params" title="Permanent link">#</a></h3>
+<p>UAVCAN_ENABLE - For GPS via CAN (PX4)</p>
+<h2 id="misc-tips">Misc Tips<a class="headerlink" href="#misc-tips" title="Permanent link">#</a></h2>
+<p>In PX4 v1.8.2, calibrating esc does not always change the motor pwm_min or set one that is low enough. Do change it manually if the drone still spins too fast when arming.</p>
+<p>In particular, ESCs like the ones on the DJI Snail seems to have issues calibrating with ardupilot and px4. If the other methods in the snail manual do not work, try calibrating each esc manually with a PWM/Servo tester</p>
+<p>For reference, at min pwm, motors should not stop spinning when drone is tilted by 60 deg to each side. <a href="https://docs.px4.io/v1.9.0/en/config_mc/pid_tuning_guide_multicopter.html">https://docs.px4.io/v1.9.0/en/config_mc/pid_tuning_guide_multicopter.html</a></p>
+<p>On px4 reflashing to different software versions does not necessarily reset all parameters, ensure reset to factory default is also used</p>
+<p>On pixhawk 2.1, battery voltage/current is only read from the first power port, second port will power the device without any readings.</p>
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../ardupilot/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Ardupilot Info and Documentation" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Ardupilot Info and Documentation
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../mavlink/" class="md-footer__link md-footer__link--next" aria-label="Next: MAVLink" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              MAVLink
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.expand", "navigation.top", "navigation.track"], "search": "../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.a6c66575.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

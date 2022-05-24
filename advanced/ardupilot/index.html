@@ -1,0 +1,840 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Multi Rotor SUTD Documentation">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
+    
+    
+      
+        <title>Ardupilot Info and Documentation - MRS Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.c382b1dc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cc9b2e1e.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#02a6f2">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="blue">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ardupilot-info-and-documentation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="MRS Documentation" class="md-header__button md-logo" aria-label="MRS Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.5 1C8 1 10 3 10 5.5c0 .88-.25 1.7-.69 2.4l.1.1h5.18l.1-.1c-.44-.7-.69-1.52-.69-2.4C14 3 16 1 18.5 1S23 3 23 5.5 21 10 18.5 10c-.88 0-1.7-.25-2.4-.69l-1.1 1.1v3.18l1.1 1.1c.7-.44 1.52-.69 2.4-.69 2.5 0 4.5 2 4.5 4.5S21 23 18.5 23 14 21 14 18.5c0-.88.25-1.7.69-2.4l-.1-.1H9.41l-.1.1c.44.7.69 1.52.69 2.4C10 21 8 23 5.5 23S1 21 1 18.5 3 14 5.5 14c.88 0 1.7.25 2.4.69l1.1-1.1v-3.18l-1.1-1.1c-.7.44-1.52.69-2.4.69C3 10 1 8 1 5.5S3 1 5.5 1m0 2A2.5 2.5 0 0 0 3 5.5 2.5 2.5 0 0 0 5.5 8 2.5 2.5 0 0 0 8 5.5 2.5 2.5 0 0 0 5.5 3m0 13A2.5 2.5 0 0 0 3 18.5 2.5 2.5 0 0 0 5.5 21 2.5 2.5 0 0 0 8 18.5 2.5 2.5 0 0 0 5.5 16m13-13A2.5 2.5 0 0 0 16 5.5 2.5 2.5 0 0 0 18.5 8 2.5 2.5 0 0 0 21 5.5 2.5 2.5 0 0 0 18.5 3m0 13a2.5 2.5 0 0 0-2.5 2.5 2.5 2.5 0 0 0 2.5 2.5 2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-2.5-2.5M3.91 17.25l1.13.66c.13-.1.29-.16.46-.16a.75.75 0 0 1 .75.75l-.01.1 1.13.65-.28.5-1.13-.66c-.13.1-.29.16-.46.16a.75.75 0 0 1-.75-.75l.01-.1-1.13-.65.28-.5m-.28-11 1.13-.65-.01-.1a.75.75 0 0 1 .75-.75c.17 0 .33.06.46.16l1.13-.66.28.5-1.13.65.01.1a.75.75 0 0 1-.75.75c-.17 0-.33-.06-.46-.16l-1.13.66-.28-.5m13.28-2 1.13.66c.13-.1.29-.16.46-.16a.75.75 0 0 1 .75.75l-.01.1 1.13.65-.28.5-1.13-.66c-.13.1-.29.16-.46.16a.75.75 0 0 1-.75-.75l.01-.1-1.13-.65.28-.5m-.28 15 1.12-.75a.75.75 0 0 1 .75-.75c.17 0 .33.06.46.16l1.13-.66.28.5-1.12.75a.75.75 0 0 1-.75.75c-.17 0-.33-.06-.46-.16l-1.13.66-.28-.5Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MRS Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Ardupilot Info and Documentation
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../basic/basic_introduction/" class="md-tabs__link">
+        Basics
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../advanced_introduction/" class="md-tabs__link md-tabs__link--active">
+        Advanced
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../competition/AAVC_reference/" class="md-tabs__link">
+        Competition Reference
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="MRS Documentation" class="md-nav__button md-logo" aria-label="MRS Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.5 1C8 1 10 3 10 5.5c0 .88-.25 1.7-.69 2.4l.1.1h5.18l.1-.1c-.44-.7-.69-1.52-.69-2.4C14 3 16 1 18.5 1S23 3 23 5.5 21 10 18.5 10c-.88 0-1.7-.25-2.4-.69l-1.1 1.1v3.18l1.1 1.1c.7-.44 1.52-.69 2.4-.69 2.5 0 4.5 2 4.5 4.5S21 23 18.5 23 14 21 14 18.5c0-.88.25-1.7.69-2.4l-.1-.1H9.41l-.1.1c.44.7.69 1.52.69 2.4C10 21 8 23 5.5 23S1 21 1 18.5 3 14 5.5 14c.88 0 1.7.25 2.4.69l1.1-1.1v-3.18l-1.1-1.1c-.7.44-1.52.69-2.4.69C3 10 1 8 1 5.5S3 1 5.5 1m0 2A2.5 2.5 0 0 0 3 5.5 2.5 2.5 0 0 0 5.5 8 2.5 2.5 0 0 0 8 5.5 2.5 2.5 0 0 0 5.5 3m0 13A2.5 2.5 0 0 0 3 18.5 2.5 2.5 0 0 0 5.5 21 2.5 2.5 0 0 0 8 18.5 2.5 2.5 0 0 0 5.5 16m13-13A2.5 2.5 0 0 0 16 5.5 2.5 2.5 0 0 0 18.5 8 2.5 2.5 0 0 0 21 5.5 2.5 2.5 0 0 0 18.5 3m0 13a2.5 2.5 0 0 0-2.5 2.5 2.5 2.5 0 0 0 2.5 2.5 2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-2.5-2.5M3.91 17.25l1.13.66c.13-.1.29-.16.46-.16a.75.75 0 0 1 .75.75l-.01.1 1.13.65-.28.5-1.13-.66c-.13.1-.29.16-.46.16a.75.75 0 0 1-.75-.75l.01-.1-1.13-.65.28-.5m-.28-11 1.13-.65-.01-.1a.75.75 0 0 1 .75-.75c.17 0 .33.06.46.16l1.13-.66.28.5-1.13.65.01.1a.75.75 0 0 1-.75.75c-.17 0-.33-.06-.46-.16l-1.13.66-.28-.5m13.28-2 1.13.66c.13-.1.29-.16.46-.16a.75.75 0 0 1 .75.75l-.01.1 1.13.65-.28.5-1.13-.66c-.13.1-.29.16-.46.16a.75.75 0 0 1-.75-.75l.01-.1-1.13-.65.28-.5m-.28 15 1.12-.75a.75.75 0 0 1 .75-.75c.17 0 .33.06.46.16l1.13-.66.28.5-1.12.75a.75.75 0 0 1-.75.75c-.17 0-.33-.06-.46-.16l-1.13.66-.28-.5Z"/></svg>
+
+    </a>
+    MRS Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" data-md-state="indeterminate" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Basics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Basics" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Basics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/basic_introduction/" class="md-nav__link">
+        Introduction to Dronery
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/components/" class="md-nav__link">
+        Components
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/software_and_configuration/" class="md-nav__link">
+        Software and Configuration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/3d_printing/" class="md-nav__link">
+        Introduction to 3D Printing
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Advanced
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Advanced" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Advanced
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../advanced_introduction/" class="md-nav__link">
+        Introduction to ADVANCED Dronery
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pid_tuning/" class="md-nav__link">
+        PID Tuning
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../auto_and_semiauto_flight/" class="md-nav__link">
+        Autonomous and Semi-Autonomous Flight
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Ardupilot Info and Documentation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Ardupilot Info and Documentation
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#indoor-autonomous-flight-for-ardupilotwip" class="md-nav__link">
+    Indoor Autonomous Flight for Ardupilot(WIP)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#misc-sensor-reference-for-ardupilot" class="md-nav__link">
+    Misc sensor reference for Ardupilot
+  </a>
+  
+    <nav class="md-nav" aria-label="Misc sensor reference for Ardupilot">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#misc-reference-for-ardupilot" class="md-nav__link">
+    Misc reference for Ardupilot
+  </a>
+  
+    <nav class="md-nav" aria-label="Misc reference for Ardupilot">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#proficnc-mini-carrier-board-pinout" class="md-nav__link">
+    ProfiCNC mini carrier board pinout
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#misc-tips" class="md-nav__link">
+    Misc Tips
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#obstacle-avoidance-sensors" class="md-nav__link">
+    Obstacle Avoidance Sensors
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optical-flow-and-lidars" class="md-nav__link">
+    Optical Flow and Lidars
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../px4/" class="md-nav__link">
+        PX4 Info and Documentation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mavlink/" class="md-nav__link">
+        MAVLink
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" data-md-state="indeterminate" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Competition Reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Competition Reference" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Competition Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../competition/AAVC_reference/" class="md-nav__link">
+        AAVC (Autonomous Aerial Vehicle Competition) Reference
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#indoor-autonomous-flight-for-ardupilotwip" class="md-nav__link">
+    Indoor Autonomous Flight for Ardupilot(WIP)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#misc-sensor-reference-for-ardupilot" class="md-nav__link">
+    Misc sensor reference for Ardupilot
+  </a>
+  
+    <nav class="md-nav" aria-label="Misc sensor reference for Ardupilot">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#misc-reference-for-ardupilot" class="md-nav__link">
+    Misc reference for Ardupilot
+  </a>
+  
+    <nav class="md-nav" aria-label="Misc reference for Ardupilot">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#proficnc-mini-carrier-board-pinout" class="md-nav__link">
+    ProfiCNC mini carrier board pinout
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#misc-tips" class="md-nav__link">
+    Misc Tips
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#obstacle-avoidance-sensors" class="md-nav__link">
+    Obstacle Avoidance Sensors
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optical-flow-and-lidars" class="md-nav__link">
+    Optical Flow and Lidars
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="ardupilot-info-and-documentation">Ardupilot Info and Documentation<a class="headerlink" href="#ardupilot-info-and-documentation" title="Permanent link">#</a></h1>
+<h2 id="indoor-autonomous-flight-for-ardupilotwip">Indoor Autonomous Flight for Ardupilot(WIP)<a class="headerlink" href="#indoor-autonomous-flight-for-ardupilotwip" title="Permanent link">#</a></h2>
+<p>Ekf3 must be used instead of ekf2
+Homepoint and ekf3 origin must be set on map before each flight, the drone icon should physically show up along with its heading.</p>
+<p>Due to the lack of any GPS or markers, the sensor readouts must be rock solid. The <a href="https://ardupilot.org/copter/docs/common-apm-navigation-extended-kalman-filter-overview.html">EKF algorithm is also based on the sensor readouts</a> so do ensure that there is no interference of the compass, baro, etc. Ensure that the compass does not drift when it is rapidly yawed, <a href="https://ardupilot.org/copter/docs/common-magnetic-interference.html">do check this page for more information</a>. Testing to be done with EMI shielding to make the sensors more stable.</p>
+<p>On the topic of sensors and compasses, remember that you can change the orientation of the compass, the <strong>primary compass used</strong> and enable and disable certain compasses. However, <a href="https://ardupilot.org/plane/docs/common-compass-setup-advanced.html#common-compass-setup-advanced">only one compass is used in flight and the other are used for error checking and redundancy</a>.</p>
+<p>(Unrelated) You can define which CAN Driver to use under a CAN port, <a href="https://ardupilot.org/copter/docs/parameters.html#can-p1-driver">CAN_P1_DRIVER can be used on either physical port</a></p>
+<h2 id="misc-sensor-reference-for-ardupilot">Misc sensor reference for Ardupilot<a class="headerlink" href="#misc-sensor-reference-for-ardupilot" title="Permanent link">#</a></h2>
+<h3 id="misc-reference-for-ardupilot">Misc reference for Ardupilot<a class="headerlink" href="#misc-reference-for-ardupilot" title="Permanent link">#</a></h3>
+<h4 id="proficnc-mini-carrier-board-pinout">ProfiCNC mini carrier board pinout<a class="headerlink" href="#proficnc-mini-carrier-board-pinout" title="Permanent link">#</a></h4>
+<p><a href="https://discuss.ardupilot.org/t/pixhawk-2-1-cube-mini-carrier-board-questions/33529/23">Mini carrier board pinout</a>
+<a href="https://docs.cubepilot.org/user-guides/carrier-boards/mini-carrier-board">Alternate link</a>
+<em>Do take note that the lack of certain ports on this board might result in incomptiablity of some sensors</em></p>
+<h4 id="misc-tips">Misc Tips<a class="headerlink" href="#misc-tips" title="Permanent link">#</a></h4>
+<p>BRD_SAFETYENABLE needs to be set to 0 for ESC calibration(else a safety switch needs to be connected),CBRK_IO on newer firmware</p>
+<h3 id="obstacle-avoidance-sensors">Obstacle Avoidance Sensors<a class="headerlink" href="#obstacle-avoidance-sensors" title="Permanent link">#</a></h3>
+<p>Most ultrasonic obstacle avoidance sensors comes with an analog value which is scaled based on distance and either a serial or I2C port depending on the version. I2C allows for multiple sensors to be chained together.</p>
+<p>Looking at the RNGFNDx pin on the Ardupilot config, either the <code>ANALOG</code> can be used via the ADC port or <code>PWM</code> can be used when plugged into any of the auxiliary ports. However, due to the restriction of only one ADC port on the pixhawk, only one rangefinder can be used via ADC. The only sensor listed on the documentation capable of <code>PWM</code> output is the <a href="https://ardupilot.org/copter/docs/common-rangefinder-lidarlite.html">Lidarlite</a>. This leaves object avoidance with multiple sensors implementation via I2C or Serial. Using this method, since ADC or Analog is not used, the RNGFND param does not have to be changed. </p>
+<p><img alt="logo" src="https://imgur.com/DcevgxM.png" /></p>
+<p>Most of the params are self explanatory and configuration can be found on the ardupilot wiki page itself. However, note that <a href="https://discuss.ardupilot.org/t/multiple-maxbotix-i2c-pixhawk-2-1-problem/35177/34">certain libraries such as the Maxbiotix library might not be able to support multiple sensors</a>, more testing is required.</p>
+<p><a href="https://www.maxbotix.com/Ultrasonic_Sensors/MB1200.htm">MaxBotix MB1200</a> (I2C Version is MB1202)
+The maxbiotix website only shows how to interface a single sensor for terrain following via <a href="https://www.maxbotix.com/articles/ultrasonic-sensors-pixhawk-ardupilot.htm">analog</a>.</p>
+<p>The obstacle avoidance can be tested under the proximity button by hitting ctrl-f. <a href="https://ardupilot.org/dev/docs/code-overview-object-avoidance.html">More information here</a>.</p>
+<h3 id="optical-flow-and-lidars">Optical Flow and Lidars<a class="headerlink" href="#optical-flow-and-lidars" title="Permanent link">#</a></h3>
+<p><a href="https://ardupilot.org/copter/docs/common-optical-flow-sensor-setup.html"><strong>READ THIS FIRST</strong></a>, in addition to the sensor specific setup.</p>
+<p>Do note that similar to PX4. A downward facing distance sensor is <strong>required</strong> for optical flow.</p>
+<p>Optical flow sensors make use of a downward facing camera to attempt to help the drone position hold while Lidars emits a laser which reflects in order to give a drone altitude data. Sensors like the HereFlow(optical flow) has <a href="https://ardupilot.org/copter/docs/common-hereflow.html">relatively straight forward config</a> and even contains a lidar on board for altitude hold. Do note that the config on there HereFlow page is greatly lacking, refer to the <a href="https://ardupilot.org/copter/docs/common-px4flow-overview.html#upgrade-the-px4flow-sensor-s-firmware">PX4 Flow</a> page for the full configuration. <strong>Additionally there is an optical calibration button by hitting ctrl-f</strong>. Additionally, the params for the HereFlow are pinned to the top of the <a href="https://discuss.cubepilot.org/t/hereflow-setup-instructions-alpha-batch/341">cubepilot forums</a> along with a pdf containing the orientation of the board and under important details.</p>
+<p>Also, the RNG_FND1 related parameters corresponds to CAN port 1 so ensure that the parameters for it are configured correctly if a different port is used.</p>
+<p>For longer ranges, other lidars such as the terranger can be used to help the drone maintain altitude. Importantly, <strong>EKF2_ALT_SOURCE</strong>  has to be changed in order for the flow and lidar to be utilized in ekf caculations.</p>
+<p><img alt="logo" src="https://imgur.com/9Nb6Ywn.png" /></p>
+<p>This sensors are important for doing autonomous indoor flight as an unstable drone platform with no position hold will crash easily. Also, ensure that the PID tuning works well in position hold as the drone will oscillate and crash if the PID tune is bad. A safe way to avoid this is by tuning manually first and running PID Autotune to determine what the flight controller deems to be the ideal PIDs.</p>
+<p>For the flow to be used a position hold, the flight mode <a href="https://ardupilot.org/copter/docs/flowhold-mode.html">flowhold</a> must be used.</p>
+<p><img alt="logo" src="https://imgur.com/o5U2SfR.png" />
+Here are the list of the flow params.</p>
+<p><img alt="logo" src="https://imgur.com/2CvDwOD.png" />
+<em>Example of bad tracking</em></p>
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../auto_and_semiauto_flight/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Autonomous and Semi-Autonomous Flight" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Autonomous and Semi-Autonomous Flight
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../px4/" class="md-footer__link md-footer__link--next" aria-label="Next: PX4 Info and Documentation" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              PX4 Info and Documentation
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.expand", "navigation.top", "navigation.track"], "search": "../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.a6c66575.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
