@@ -23,6 +23,7 @@ nav:
         - 'basic/basic_introduction.md'
         - 'basic/components.md'
         - 'basic/software_and_configuration.md'
+        - 'basic/3d_printing.md'
     - 'Advanced': 
         - 'advanced/advanced_introduction.md'
         - 'advanced/pid_tuning.md'

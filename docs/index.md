@@ -21,8 +21,4 @@ An guide to more advanced topics can be found here
 ## For competition team members
 Opinions and experience from seniors can be found here
 
-[AAVC Reference](competition/AAVC_reference){: .md-button .md-button--primary}
-
-## TO-DO
-- [ ] Add README to repo
-- [ ] Add CONTRIBUTING to repo
+[Competition Information](competition/AAVC_reference){: .md-button .md-button--primary}

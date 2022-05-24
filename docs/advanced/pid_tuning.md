@@ -3,7 +3,7 @@ hide:
 #  - navigation
 ---
 
-# PID TUNING
+# PID Tuning
 Ensure that the PID tuning is stable by checking the response curves for the pitch and roll graphs before attempting to fly in mission/auto flight modes. Overshooting the setpoints will result in oscillations and crashes. It takes time and experience to get the tune right.
 **However**, many other factors such as lack of dampening can cause excessive vibrations too, similarly loose screws or components that are not fastened down might generate issues. Visually inspect your drone and check for possible issues that might cause instability before attempting to get a perfect tune.
 
