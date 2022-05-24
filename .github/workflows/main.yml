@@ -3,8 +3,8 @@ name: Auto build website using MkDocs gh-deploy
 # Controls when the action will run. Triggers the workflow on pull request
 # events on the master branch
 on:
-  pull_request:
-    branches: [ master ]
+  branch_protection_rule:
+    types: [created, edited, deleted]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
